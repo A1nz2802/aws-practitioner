@@ -91,7 +91,7 @@ IAM can be used to manage:
 - Multi-factor authentication (MFA).
 - API keys for programmatic access (CLI).
 
-<img src="https://i.imgur.com/39XryvM.png" alt="1" width="50%"/>
+<img src="https://i.imgur.com/39XryvM.png" alt="1" width="80%"/>
 
 **Users, Groups, Roles and Policies**
 
@@ -100,7 +100,7 @@ IAM can be used to manage:
 - Roles: Roles are created and then “assumed” by trusted entities and define a set of permissions for making AWS service requests.
 - Policies: Policies are documents that define permissions and can be applied to users, groups, and roles. Policy documents are written in JSON (key value pair that consists of an attribute and a value).
 
-<img src="https://digitalcloud.training/wp-content/uploads/2022/02/iam-users-groups-roles-policies.png" alt="2" width="50%"/>
+<img src="https://digitalcloud.training/wp-content/uploads/2022/02/iam-users-groups-roles-policies.png" alt="2" width="80%"/>
 
 **IAM Best Practices**
 
@@ -128,7 +128,7 @@ IAM can be used to manage:
 - Amazon EC2 changes the economics of computing by allowing you to pay only for capacity that you use.
 - Amazon EC2 provides developers the tools to build failure resilient applications and isolate them from common failure scenarios.
 
-<img src="https://digitalcloud.training/wp-content/uploads/2022/02/ec2-instance-launch-1.png" alt="3" width="50%"/>
+<img src="https://digitalcloud.training/wp-content/uploads/2022/02/ec2-instance-launch-1.png" alt="3" width="80%"/>
 
 **Benefits of Amazon EC2**
 
@@ -145,5 +145,5 @@ IAM can be used to manage:
 - User Data gives you the ability to run commands when the system is starting and metadata can return
 - Metadata can return information about the instance that's recorded locally
 
-<img src="https://i.imgur.com/mN5B7kM.png" alt="4" width="50%"/>
-<img src="https://i.imgur.com/v7nm1uP.png" alt="5" width="50%"/>
+<img src="https://i.imgur.com/mN5B7kM.png" alt="4" width="80%"/>
+<img src="https://i.imgur.com/v7nm1uP.png" alt="5" width="80%"/>
