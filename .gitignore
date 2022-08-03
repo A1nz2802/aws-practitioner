@@ -1,7 +1,7 @@
 /Amazon CloudFront
-/Amazon EC2
 /Amazon S3
 /Amazon VPC
 /Auto Scaling and ELB
 /AWS CloudFormation
 /Serverless
+*.csv
