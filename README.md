@@ -69,6 +69,8 @@
   - Regional Edge Caches sit between your CloudFront Origin servers and the Edge Locations
   - A Regional Edge Cache has a larger cache-width than each of the individual Edge Locations
 
+<img src="https://i.imgur.com/tbnnlad.png" alt="1" width="80%"/>
+
 ##### The AWS shared responsability model defines custormer/AWS responsabilities
 
 - AWS are responsible for "Security **of** the cloud"
@@ -76,6 +78,10 @@
   - This infrastructure is composed of the hardware, software, networking, and facilities that run AWS Cloud services
 - Customers are responsibles for "Security **in** the cloud"
   - For EC2 this includes network level security, operating system patches and updates, IAM user access managment, and client and server-side data encryption
+
+<img src="https://i.imgur.com/TxrGIeK.png" alt="1" width="80%"/>
+
+<img src="https://i.imgur.com/Xfq8oNN.png" alt="1" width="80%"/>
 
 ##### The 6 advantages of cloud
 
@@ -102,7 +108,7 @@ IAM can be used to manage:
 - Multi-factor authentication (MFA).
 - API keys for programmatic access (CLI).
 
-<img src="https://i.imgur.com/39XryvM.png" alt="1" width="80%"/>
+<img src="https://i.imgur.com/JWSaDi5.png" alt="1" width="80%"/>
 
 ##### Users, Groups, Roles and Policies
 
@@ -139,7 +145,7 @@ IAM can be used to manage:
 - Amazon EC2 changes the economics of computing by allowing you to pay only for capacity that you use.
 - Amazon EC2 provides developers the tools to build failure resilient applications and isolate them from common failure scenarios.
 
-<img src="https://digitalcloud.training/wp-content/uploads/2022/02/ec2-instance-launch-1.png" alt="3" width="80%"/>
+<img src="https://i.imgur.com/H5MaQWO.png" alt="3" width="80%"/>
 
 ##### Benefits of Amazon EC2
 
@@ -155,8 +161,8 @@ IAM can be used to manage:
 - User Data gives you the ability to run commands when the system is starting
 - Metadata can return information about the instance that's recorded locally
 
-<img src="https://i.imgur.com/mN5B7kM.png" alt="4" width="80%"/>
-<img src="https://i.imgur.com/v7nm1uP.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/pEREcsS.png" alt="4" width="80%"/>
+<img src="https://i.imgur.com/OfpqWLs.png" alt="5" width="80%"/>
 
 ##### Access Keys
 
@@ -164,11 +170,11 @@ IAM can be used to manage:
 - This is **secret information that is stored on the file system of the instance** (it's not a very secure way of storing that information)
 - Access Keys will pick up whatever permissions the policy allows that user
 
-<img src="https://i.imgur.com/ApmZS53.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/vgRCR3k.png" alt="5" width="80%"/>
 
 - Instance profile is a way that we can connect an IAM role to our EC2 instance. That role is then assumed by the EC2 instance and will gain access to whathever permissions the policy attached to the roles provides. The great thing about this is there's **no credentials stored on the EC2 instance**
 
-<img src="https://i.imgur.com/b51DbVL.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/HoWvQTf.png" alt="5" width="80%"/>
 
 ##### AWS Batch 
 
@@ -193,13 +199,13 @@ IAM can be used to manage:
 - The **registry** is where the image is stored
 - A **service** is a way that we can maintain a desired count of tasks. We can create a service and define that we always want to have four tasks running, if one fails, then it just creates another one for us. Where do these actual tasks run? They run on container instances (essentially running on EC2 instances)
 
-<img src="https://i.imgur.com/bGtzOT3.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/va96r2E.png" alt="5" width="80%"/>
 
 - There are actually two different types of ECS: Firstly, we have what's called the **EC2 launch type**. With the EC2 launch type, what's happening is you're actually provisioning EC2 instances and then running your containers on top of those instances, that means that you are responsible for managing the EC2 instances on which your containers run. You're charged per running instances, and you can integrate into storage services like EFS and EBS which will talk about a bit later on.
 
 - On the other hand, we have a type of ECS called **Fargate**. With Fargate, AWS is managing the cluster for you. **Fargate is essentially a serverless implementation**, that means you don't have to manage the underlying infrastructure
 
-<img src="https://i.imgur.com/XebGD7F.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/kCqkIhS.png" alt="5" width="80%"/>
 
 **References**
 
