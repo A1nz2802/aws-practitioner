@@ -28,6 +28,14 @@
     + [S3 Versioning, Replication, and Lifecycle Rules](#s3-versioning--replication--and-lifecycle-rules)
     + [Amazon S3 Glacier](#amazon-s3-glacier)
     + [AWS Storage Gateway](#aws-storage-gateway)
+- [DNS, Elastic Load Balancing, and Auto Scaling](#dns--elastic-load-balancing--and-auto-scaling)
+    + [DNS and Amazon Route 53](#dns-and-amazon-route-53)
+    + [Elasticity: Scaling Up vs Out](#elasticity--scaling-up-vs-out)
+    + [Amazon EC2 Auto Scaling](#amazon-ec2-auto-scaling)
+    + [Load Balancing and High Availability](#load-balancing-and-high-availability)
+    + [Amazon Elastic Load Balancer (ELB)](#amazon-elastic-load-balancer--elb-)
+    + [Elastically Scale the Application](#elastically-scale-the-application)
+    + [Scaling Policies](#scaling-policies)
 
 ## Cloud Computing and AWS
 
@@ -79,7 +87,7 @@
   - Regional Edge Caches sit between your CloudFront Origin servers and the Edge Locations
   - A Regional Edge Cache has a larger cache-width than each of the individual Edge Locations
 
-<img src="https://i.imgur.com/tbnnlad.png" alt="1" width="80%"/>
+<img src="https://i.imgur.com/tbnnlad.png" alt="1" width="100%"/>
 
 #### The AWS shared responsability model defines custormer/AWS responsabilities
 
@@ -89,9 +97,9 @@
 - Customers are responsibles for "Security **in** the cloud"
   - For EC2 this includes network level security, operating system patches and updates, IAM user access managment, and client and server-side data encryption
 
-<img src="https://i.imgur.com/TxrGIeK.png" alt="1" width="80%"/>
+<img src="https://i.imgur.com/TxrGIeK.png" alt="1" width="100%"/>
 
-<img src="https://i.imgur.com/Xfq8oNN.png" alt="1" width="80%"/>
+<img src="https://i.imgur.com/Xfq8oNN.png" alt="1" width="100%"/>
 
 #### The 6 advantages of cloud
 
@@ -118,7 +126,7 @@ IAM can be used to manage:
 - Multi-factor authentication (MFA).
 - API keys for programmatic access (CLI).
 
-<img src="https://i.imgur.com/JWSaDi5.png" alt="1" width="80%"/>
+<img src="https://i.imgur.com/JWSaDi5.png" alt="1" width="100%"/>
 
 #### Users, Groups, Roles and Policies
 
@@ -127,7 +135,7 @@ IAM can be used to manage:
 - Roles: Roles are created and then “assumed” by trusted entities and define a set of permissions for making AWS service requests.
 - Policies: Policies are documents that define permissions and can be applied to users, groups, and roles. Policy documents are written in JSON (key value pair that consists of an attribute and a value).
 
-<img src="https://digitalcloud.training/wp-content/uploads/2022/02/iam-users-groups-roles-policies.png" alt="2" width="80%"/>
+<img src="https://digitalcloud.training/wp-content/uploads/2022/02/iam-users-groups-roles-policies.png" alt="2" width="100%"/>
 
 #### IAM Best Practices
 
@@ -155,7 +163,7 @@ IAM can be used to manage:
 - Amazon EC2 changes the economics of computing by allowing you to pay only for capacity that you use.
 - Amazon EC2 provides developers the tools to build failure resilient applications and isolate them from common failure scenarios.
 
-<img src="https://i.imgur.com/H5MaQWO.png" alt="3" width="80%"/>
+<img src="https://i.imgur.com/H5MaQWO.png" alt="3" width="100%"/>
 
 #### Benefits of Amazon EC2
 
@@ -171,8 +179,8 @@ IAM can be used to manage:
 - User Data gives you the ability to run commands when the system is starting
 - Metadata can return information about the instance that's recorded locally
 
-<img src="https://i.imgur.com/pEREcsS.png" alt="4" width="80%"/>
-<img src="https://i.imgur.com/OfpqWLs.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/pEREcsS.png" alt="4" width="100%"/>
+<img src="https://i.imgur.com/OfpqWLs.png" alt="5" width="100%"/>
 
 #### Access Keys
 
@@ -180,11 +188,11 @@ IAM can be used to manage:
 - This is **secret information that is stored on the file system of the instance** (it's not a very secure way of storing that information)
 - Access Keys will pick up whatever permissions the policy allows that user
 
-<img src="https://i.imgur.com/vgRCR3k.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/vgRCR3k.png" alt="5" width="100%"/>
 
 - Instance profile is a way that we can connect an IAM role to our EC2 instance. That role is then assumed by the EC2 instance and will gain access to whathever permissions the policy attached to the roles provides. The great thing about this is there's **no credentials stored on the EC2 instance**
 
-<img src="https://i.imgur.com/HoWvQTf.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/HoWvQTf.png" alt="5" width="100%"/>
 
 #### AWS Batch 
 
@@ -209,13 +217,13 @@ IAM can be used to manage:
 - The **registry** is where the image is stored
 - A **service** is a way that we can maintain a desired count of tasks. We can create a service and define that we always want to have four tasks running, if one fails, then it just creates another one for us. Where do these actual tasks run? They run on container instances (essentially running on EC2 instances)
 
-<img src="https://i.imgur.com/va96r2E.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/va96r2E.png" alt="5" width="100%"/>
 
 - There are actually two different types of ECS: Firstly, we have what's called the **EC2 launch type**. With the EC2 launch type, what's happening is you're actually provisioning EC2 instances and then running your containers on top of those instances, that means that you are responsible for managing the EC2 instances on which your containers run. You're charged per running instances, and you can integrate into storage services like EFS and EBS which will talk about a bit later on.
 
 - On the other hand, we have a type of ECS called **Fargate**. With Fargate, AWS is managing the cluster for you. **Fargate is essentially a serverless implementation**, that means you don't have to manage the underlying infrastructure
 
-<img src="https://i.imgur.com/kCqkIhS.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/kCqkIhS.png" alt="5" width="100%"/>
 
 ## AWS Storage Services
 
@@ -225,9 +233,9 @@ IAM can be used to manage:
 
 - **Object Storage System**: User uploads objects using a web browser and they upload them to a container (like a bucket into which you can put your objects). There's no hierarchy of objects and it uses a REST API. Objects can be files, videos, images etc. Object-based storage are very scalable and very low cost
 
-<img src="https://i.imgur.com/UoaJu5c.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/UoaJu5c.png" alt="5" width="100%"/>
 
-<img src="https://i.imgur.com/rRmaBCt.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/rRmaBCt.png" alt="5" width="100%"/>
 
 #### Amazon Elastic Block Store (EBS)
 
@@ -238,7 +246,7 @@ IAM can be used to manage:
 - EBS volumes must be in the **same AZ** as the instances they are attached to
 - **Root EBS** volumes **are deleted** on termination by default
 
-<img src="https://i.imgur.com/enljJRB.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/enljJRB.png" alt="5" width="100%"/>
 
 #### Amazon EBS Snapshots and DLM (Data Lifecycle Manager DLM)
 
@@ -252,7 +260,7 @@ IAM can be used to manage:
   - Reduce storage costs by deleting outdated backups
   - Create disaster recovery backup policies that back up data to isolated accounts
 
-<img src="https://i.imgur.com/1KO9AsQ.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/1KO9AsQ.png" alt="5" width="100%"/>
 
 #### EBS vs Instance Store
 
@@ -260,7 +268,7 @@ IAM can be used to manage:
 - EBS volumes are **attached over a network** and they are **persistent storage**
 - Instance Store are **very high performance**, but they're **non-persistent**
 
-<img src="https://i.imgur.com/wVW9aPK.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/wVW9aPK.png" alt="5" width="100%"/>
 
 #### Amazon Machine Images (AMI)
 
@@ -281,7 +289,7 @@ IAM can be used to manage:
 - EFS uses something called the **NFS Protocol**
 - It's actually limited to Linux instances only
 
-<img src="https://i.imgur.com/cTtbHbJ.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/cTtbHbJ.png" alt="5" width="100%"/>
 
 #### Amazon Simple Storage (S3)
 
@@ -302,9 +310,9 @@ IAM can be used to manage:
 - However, you create your buckets within a REGION
 - It is a best practice to create buckets in regions that are physically closet to your users to reduce latency
 
-<img src="https://i.imgur.com/MyfJyE5.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/MyfJyE5.png" alt="5" width="100%"/>
 
-<img src="https://i.imgur.com/p2PZjgR.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/p2PZjgR.png" alt="5" width="100%"/>
 
 #### Amazon S3 Storage Classes
 
@@ -320,7 +328,7 @@ When we store our objects in S3 buckets, we can choose different storage classes
 - First byte latency just means how quickly can you get access to your data
 - Intelligence tiering moves data intelligently between different storage classes for you
 
-<img src="https://i.imgur.com/aNZykhB.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/aNZykhB.png" alt="5" width="100%"/>
 
 #### S3 Versioning, Replication, and Lifecycle Rules
 
@@ -336,7 +344,7 @@ When we store our objects in S3 buckets, we can choose different storage classes
 - Lifecycle rules:
   - Another way we can work with objects is to use lifecycle rules, you can configure them in the console and that's essentially moving your data between different storage classes
 
-<img src="https://i.imgur.com/GCIqgKz.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/GCIqgKz.png" alt="5" width="100%"/>
 
 #### Amazon S3 Glacier
 
@@ -368,7 +376,78 @@ When we store our objects in S3 buckets, we can choose different storage classes
   - Low latency access to data in AWS for on-premises applications
   - Disaster recovery
 
-<img src="https://i.imgur.com/d8Eq7zx.png" alt="5" width="80%"/>
+<img src="https://i.imgur.com/d8Eq7zx.png" alt="5" width="100%"/>
+
+## DNS, Elastic Load Balancing, and Auto Scaling
+
+#### DNS and Amazon Route 53 
+
+<img src="https://i.imgur.com/sPenpsX.png" alt="5" width="100%"/>
+
+| **Routing Policy** |                                 **What it does**                                     |
+|--------------------|--------------------------------------------------------------------------------------|
+| Routing            | Policy What it does                                                                  |
+| Simple             | Simple DNS response providing the IP address associated with a name                  |
+| Failover           | If primary is down (based on health checks), routes to secondary destination         |
+| Geolocation        | Uses geographic location you’re in (e.g. Europe) to route you to the closest r egion |
+| Geoproximity       | Routes you to the closest region within a geographic area                            |
+| Latency            | Directs you based on the lowest latency route to resources                           |
+| Multivalue answer  | Returns several IP addresses and functions as a basic load balancer                  |
+| Weighted           | Uses the relative weights assigned to resources to determine which to route to       |
+
+<img src="https://i.imgur.com/zjRjyza.png" alt="5" width="100%"/>
+
+#### Elasticity: Scaling Up vs Out
+
+- Scaling up (vertical scaling): Scaling up means that we add more hardware. We have more memory, more storage space, more network bandwidth, etc. Essentially, we're adding resources to that instance. How do you do this in Amazon resources? For example, with EC2, we might have a T2 instance, so that's a certain instance type, has a certain amount of CPU and RAM. Now **we can always change the instance type** and maybe we move it to C5, now we have an instance with more resources. **It's the same instance we just change the instance type**
+
+<img src="https://i.imgur.com/fjADYkP.png" alt="5" width="70%"/>
+
+<img src="https://i.imgur.com/wu36xS3.png" alt="5" width="50%"/>
+
+- Scaling out (horizontal scaling): With horizontal scaling, we simply add more instances. Scalling out gives you more **resiliency**
+
+<img src="https://i.imgur.com/bW67Apm.png" alt="5" width="70%"/>
+
+<img src="https://i.imgur.com/ITPCZFx.png" alt="5" width="50%"/>
+
+#### Amazon EC2 Auto Scaling
+
+- Amazon EC2 Auto Scaling is a service that will dynamically scale our EC2 instances horizontally, scaling out by launching and terminating EC2 instances
+- Provides elasticity and scalability
+- Responds to EC2 status checks and CloudWatch metrics
+- Can scale based on demand (performance) or on a schedule
+- Scaling policies define how to respond to changes in demand
+
+<img src="https://i.imgur.com/OB2g0Gb.png" alt="5" width="100%"/>
+
+#### Load Balancing and High Availability
+
+- Fault tolerance is where we have **the ability to recover in the case of something like a component failure**. AWS provides a lot of fault tolerance built-in to their infrastructure and we're able to spread the load between different availability zones so that we have fault tolerance across the AZ because each one is one or more data centers.
+
+<img src="https://live.staticflickr.com/65535/52274804469_0f1547971d_o.png" alt="5" width="100%"/>
+
+- If we add in auto scaling as well, then we get an even better solution because that failed web server, can **now actually be replaced by auto scaling**
+- We regularly use auto scaling and load balancing together to make sure that we have the right number of EC2 instances that we can recover from failure and that we can direct the incoming connections across all of out instances
+
+<img src="https://live.staticflickr.com/65535/52274577621_5ac5595a63_o.png" alt="5" width="100%"/>
+
+#### Amazon Elastic Load Balancer (ELB)
+
+<img src="https://live.staticflickr.com/65535/52273696337_c2c2834733_o.png" alt="5" width="100%"/>
+
+<img src="https://live.staticflickr.com/65535/52275258200_d3a2ae8c91_o.png" alt="5" width="100%"/>
+
+#### Elastically Scale the Application
+
+<img src="https://i.imgur.com/bxvUsDz.png" alt="5" width="100%"/>
+
+#### Scaling Policies
+
+- Target Tracking: Attempts to keep the group at or close to the metric
+- Simple Scaling: Adjust group size based on a metric
+- Step Scaling: Adjust group size based on a metric – adjustments vary based on the size of the alarm breach
+- Scheduled Scaling – Adjust the group size at a specific time
 
 **References**
 
