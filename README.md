@@ -36,6 +36,12 @@
     + [Amazon Elastic Load Balancer (ELB)](#amazon-elastic-load-balancer--elb-)
     + [Elastically Scale the Application](#elastically-scale-the-application)
     + [Scaling Policies](#scaling-policies)
+- [Application Services](#application-services)
+    + [Serverless Services](#serverless-services)
+    + [AWS Lambda Functions](#aws-lambda-functions)
+    + [Application Integration Services](#application-integration-services)
+    + [Amazon EventBridge/CloudWatch Events](#amazon-eventbridge-cloudwatch-events)
+    + [Amazon API Gateway](#amazon-api-gateway)
 
 ## Cloud Computing and AWS
 
@@ -448,6 +454,102 @@ When we store our objects in S3 buckets, we can choose different storage classes
 - Simple Scaling: Adjust group size based on a metric
 - Step Scaling: Adjust group size based on a metric – adjustments vary based on the size of the alarm breach
 - Scheduled Scaling – Adjust the group size at a specific time
+
+## Application Services
+
+#### Serverless Services
+
+- With serverless there are no instances to manage
+- You don’t need to provision hardware
+- There is no management of operating systems or software
+- Capacity provisioning and patching is handled automatically
+- Provides automatic scaling and high availability
+- Can be very cheap!
+- Serverless services include:
+  - AWS Lambda
+  - AWS Fargate
+  - Amazon EventBridge
+  - AWS Step Functions
+  - Amazon SQS
+  - Amazon SNS
+  - Amazon API Gateway
+  - Amazon S3
+  - Amazon DynamoDB
+
+<img src="https://i.imgur.com/69w41cn.png" alt="5" width="100%"/>
+
+#### AWS Lambda Functions
+
+- AWS Lambda executes code only when needed and scales automatically
+- You pay only for the compute time you consume (you pay nothing when your code is not running)
+- Benefits of AWS Lambda:
+- No servers to manage
+- Continuous scaling
+- Millisecond billing
+- Integrates with almost all other AWS services
+- Primary use cases for AWS Lambda:
+  - Data processing
+  - Real-time file processing
+  - Real-time stream processing
+  - Build serverless backends for web, mobile, IOT, and 3rd party API requests
+
+<img src="https://i.imgur.com/YRIIlRT.png" alt="5" width="100%"/>
+
+#### Application Integration Services
+
+- Amazon Simple Queue Service (SQS)
+  - SQS offers a reliable, highly-scalable, hosted queue for storing messages in transit between computers
+  - SQS is used for distributed/decoupled applications
+  - SQS uses a message-oriented API
+  - SQS uses pull based (polling) not push based
+
+<img src="https://i.imgur.com/rVVPife.png" alt="5" width="100%"/>
+
+- Amazon MQ
+  - Message broker service
+  - Similar to Amazon SQS
+  - Based on Apache Active MQ and RabbitMQ
+  - Used when customers require industry standard APIs and protocols
+  - Useful when migrating existing queue-based applications into the cloud
+
+- Amazon Simple Notification Service (SNS)
+  - Publisher/subscriber model
+  - Amazon SNS is used for building and integrating looselycoupled, distributed applications
+  - Provides instantaneous, push-based delivery (no polling)
+  - Uses simple APIs and easy integration with applications
+  - Offered under an inexpensive, pay-as-you-go model with no up-front costs
+
+<img src="https://i.imgur.com/d5MuFS6.png" alt="AWS SNS" width="100%"/>
+
+- AWS Step Functions
+  - AWS Step Functions makes it easy to coordinate the components of distributed applications as a series of steps in a visual workflow
+  - You can quickly build and run state machines to execute the steps of your application in a reliable and scalable fashion
+
+- AWS Simple Workflow Service (SWF)
+  - Amazon Simple Workflow Service (SWF) is a web service that makes it easy to coordinate work across distributed application components
+  - Create distributed asynchronous systems as workflows
+  - Best suited for human-enabled workflows like an order fulfilment system or for procedural requests
+  - AWS recommends that for new applications customers consider Step Functions instead of SWF
+
+
+<img src="https://i.imgur.com/zeg2qFx.png" alt="5" width="100%"/>
+
+#### Amazon EventBridge/CloudWatch Events 
+
+- Serverless event bus
+- Used for building event-driven architectures
+- Ingests data and routes it to target AWS services
+
+<img src="https://i.imgur.com/88wkOcH.png" alt="5" width="100%"/>
+
+#### Amazon API Gateway
+
+- Publish APIs on AWS
+- Create RESTful and Websocket APIs
+- Fully managed service
+- Forward connections to AWS services and on-premises applications
+
+<img src="https://i.imgur.com/APf9zh1.png" alt="5" width="100%"/>
 
 **References**
 

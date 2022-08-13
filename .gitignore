@@ -1,7 +1,6 @@
 /Amazon CloudFront
 /Amazon VPC
 /AWS CloudFormation
-/Serverless
 *.pem
 *.pdf
 *.csv
