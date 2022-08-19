@@ -1,5 +1,4 @@
 /Amazon CloudFront
-/Amazon VPC
 /AWS CloudFormation
 *.pem
 *.pdf

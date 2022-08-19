@@ -42,6 +42,16 @@
     + [Application Integration Services](#application-integration-services)
     + [Amazon EventBridge/CloudWatch Events](#amazon-eventbridge-cloudwatch-events)
     + [Amazon API Gateway](#amazon-api-gateway)
+- [Amazon VPC, Networking, and Hybrid](#amazon-vpc--networking--and-hybrid)
+    + [Amazon Virtual Private Cloud (VPC)](#amazon-virtual-private-cloud--vpc-)
+    + [Create a custom VPC](#create-a-custom-vpc)
+    + [Security Groups and Network ACLs](#security-groups-and-network-acls)
+    + [Public, Private and Elastic IP Address](#public--private-and-elastic-ip-address)
+    + [NAT Gateways and NAT Instances](#nat-gateways-and-nat-instances)
+    + [VPC Peering](#vpc-peering)
+    + [Amazon VPN and AWS Direct Connect](#amazon-vpn-and-aws-direct-connect)
+    + [AWS Transit Gateway](#aws-transit-gateway)
+    + [AWS Outposts](#aws-outposts)
 
 ## Cloud Computing and AWS
 
@@ -550,6 +560,116 @@ When we store our objects in S3 buckets, we can choose different storage classes
 - Forward connections to AWS services and on-premises applications
 
 <img src="https://i.imgur.com/APf9zh1.png" alt="5" width="100%"/>
+
+## Amazon VPC, Networking, and Hybrid
+
+#### Amazon Virtual Private Cloud (VPC)
+
+- A virtual private cloud (VPC) is a virtual network dedicated to your AWS account
+- Analogous to having your own DC inside AWS
+- It is logically isolated from other virtual networks in the AWS Cloud
+- Provides complete control over the virtual networking environment including selection of IP ranges, creation of subnets, and configuration of route tables and gateways
+- You can launch your AWS resources, such as Amazon EC2 instances, into your VPC
+
+<img src="https://i.imgur.com/mEV0v6u.png" alt="5" width="100%"/>
+
+- When you create a VPC, you must specify a range of IPv4 addresses for the VPC in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16
+- A VPC spans all the Availability Zones in the region
+- You have full control over who has access to the AWS resources inside your VPC
+- By default you can create up to 5 VPCs per region
+- A default VPC is created in each region with a subnet in each AZ
+
+<img src="https://i.imgur.com/eFcRyvy.png" alt="5" width="100%"/>
+
+<img src="https://i.imgur.com/DrOF4UY.png" alt="5" width="100%"/>
+
+#### Create a custom VPC
+
+<img src="https://i.imgur.com/ExRRKgA.png" alt="5" width="100%"/>
+
+#### Security Groups and Network ACLs
+
+- A **firewall** is essentially a security device wich screens incoming and outgoing connections and checks whether they're going to be allowed or disallowed based on some rules that we can define
+- Network ACLs is Network Access Control List. ACLs is that list of the ports and protocols that you're going to allow
+
+<img src="https://i.imgur.com/T2yQjKI.png" alt="5" width="100%"/>
+
+<img src="https://i.imgur.com/UD1B1tM.png" alt="5" width="100%"/>
+
+#### Public, Private and Elastic IP Address
+
+| Name                        | Description                                                   |
+|-----------------------------|---------------------------------------------------------------|
+| Public IP Address           | - Lost when the instance is stoppedas                         |
+|                             | - Used in Public Subnets                                      |
+|                             | - No charge                                                   |
+|                             | - Associated with a private IP address on the instance        |
+|                             | - Cannot be moved between instances                           |
+| Private IP Address          | - Retained when the instance is stopped                       |
+|                             | - Used in Public and Private Subnets                          |
+| Elastic IP Address          | - Static Public IP address                                    |
+|                             | - You are charged if not used                                 |
+|                             | - Associated with a private IP address on the instance        |
+|                             | - Can be moved between instances and Elastic Network Adapters |
+
+#### NAT Gateways and NAT Instances
+
+- NAT means Network Address Translation
+
+| **NAT Instance**                                                                                | **NAT Gateway**                                                                     |
+|-------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
+| Managed by you (e.g. software updates)                                                          | Managed by AWS                                                                      |
+| Scale up (instance type) manually and use enhanced networking                                   | Elastic scalability up to 45 Gbps                                                   |
+| No high availability – scripted/auto-scaled HA possible using multiple NATs in multiple subnets | Provides automatic high availability within an AZ and can be placed in multiple AZs |
+
+<img src="https://i.imgur.com/2ez99PB.png" alt="5" width="100%"/>
+
+#### VPC Peering
+
+- We use VPC Peering to connect our VPCs in the same or in different accounts,in the same or different regions, and we want to connect them using private IP addresses.
+
+<img src="https://i.imgur.com/HbIYdFI.png" alt="5" width="100%"/>
+
+#### Amazon VPN and AWS Direct Connect
+
+In many circumstances, we're going to want to connect our on-premises data centers to the public cloud, to our AWS VPC. We might also do that for our company offices as well. So there's two ways that we can do this, and that's an Amazon virtual private network, VPN, and also an AWS Direct Connect connection.
+
+- AWS Site-to-Site VPN
+  - You can establish a virtual private network connection and this is an encrypted connection that's going over the internet. One of the problems with that is you are subject to any bandwidth issues, any latency or delay issues on the internet.
+
+<img src="https://i.imgur.com/ktnuosw.png" alt="5" width="100%"/>
+
+- AWS VPN CloudHub
+  - It's essentially a series of different site-to-site connections. We have customer gateways in multiple offices or data center environments and we connect them in a hub-and-spoke model to our virtual private gateway on the AWS side. In this model, the customer offices can also communicate to each othe via AWS.
+
+<img src="https://i.imgur.com/mawI9tq.png" alt="5" width="100%"/>
+
+- AWS Direct Connect
+
+<img src="https://i.imgur.com/YQY6gdH.png" alt="5" width="100%"/>
+
+#### AWS Transit Gateway
+
+Earlier on, we looked at VPC peering and you saw that we had lots of different connections goins between our four VPC, imagine if you have many VPCs, then it's going to get very complicated using VPC Peering to set up internal routing.
+
+You can think of the transit gateway as a network hub that interconnects your VPCs and your on-premises network
+
+<img src="https://i.imgur.com/b9k6usV.png" alt="5" width="100%"/>
+
+#### AWS Outposts
+
+Sometimes customers want to actually run some of the AWS services in their on premises data center, Outposts allows them to do that.
+
+- Services you can run on AWS Outposts include:
+  - Amazon EC2
+  - Amazon EBS
+  - Amazon S3
+  - Amazon VPC
+  - Amazon ECS/EKS
+  - Amazon RDS
+  - Amazon EMR
+
+<img src="https://i.imgur.com/VG3xSlI.png" alt="5" width="100%"/>
 
 **References**
 
