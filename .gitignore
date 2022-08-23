@@ -1,5 +1,4 @@
 /Amazon CloudFront
-/AWS CloudFormation
 *.pem
 *.pdf
 *.csv

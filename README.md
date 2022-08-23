@@ -52,6 +52,15 @@
     + [Amazon VPN and AWS Direct Connect](#amazon-vpn-and-aws-direct-connect)
     + [AWS Transit Gateway](#aws-transit-gateway)
     + [AWS Outposts](#aws-outposts)
+- [Deployment and Automation](#deployment-and-automation)
+    + [Caching and Amazon CloudFront](#caching-and-amazon-cloudfront)
+    + [AWS Global Accelerator](#aws-global-accelerator)
+    + [AWS CloudFormation](#aws-cloudformation)
+    + [AWS Cloud Development Kit (CDK)](#aws-cloud-development-kit--cdk-)
+    + [AWS Elastic Beanstalk](#aws-elastic-beanstalk)
+    + [AWS Developer Tools](#aws-developer-tools)
+    + [AWS X-Ray](#aws-x-ray)
+    + [AWS OpsWorks](#aws-opsworks)
 
 ## Cloud Computing and AWS
 
@@ -670,6 +679,102 @@ Sometimes customers want to actually run some of the AWS services in their on pr
   - Amazon EMR
 
 <img src="https://i.imgur.com/VG3xSlI.png" alt="5" width="100%"/>
+
+## Deployment and Automation
+
+#### Caching and Amazon CloudFront
+
+Amazon CloudFront is a service we can use to improve performance for accessing content by caching it around the world. Maybe your website content is sitting in S3 or it's sitting on an EC2 Web server, that content then gets pushed to something called an **edge location**. There's lots of edge locations around the world and they're part of the AWS global infrastructure and that means that your users can now connect to the nearest edge location.
+
+<img src="https://i.imgur.com/WNWv6ua.png" alt="5" width="100%"/>
+
+#### AWS Global Accelerator
+
+AWS Global Accelerator is another service that we can use to improve the performance of access to our AWS resources. Just like with CloudFront, the AWS Global Accelerator service leverages these edge locations that are around the world
+
+- AWS Global Accelerator vs CloudFront
+  - Both use the AWS global network and edge locations
+  - CloudFront improves performance for cacheable content and dynamic content
+  - GA improves performance for a wide range of applications over TCP and UDP
+  - GA proxies connections to applications in one or more AWS Regions
+  - GA provides failover between AWS Regions
+
+<img src="https://i.imgur.com/m1CpY2X.png" alt="5" width="100%"/>
+
+#### AWS CloudFormation
+
+AWS CloudFormation is a service that we can use to deploy infrastructure on AWS using code that's written in a template file.
+
+- Infrastructure is provisioned consistently, with fewer mistakes (human error)
+- Less time and effort than configuring resources manually
+- Free to use (you're only charged for the resources provisioned)
+- A template is a YAML or JSON template used to describe the endstate of the infrastructure you are either provisioning or changing
+- CloudFormation creates a Stack based on the template
+- Can easily rollback and delete the entire stack as well
+
+<img src="https://i.imgur.com/qqE6VvE.png" alt="5" width="100%"/>
+
+#### AWS Cloud Development Kit (CDK)
+
+- Open-source software development framework to define your cloud application resources using familiar programming languages
+- Preconfigures cloud resources with proven defaults using constructs
+- Provisions your resources using AWS CloudFormation
+- Enables you to model application infrastructure using TypeScript, Python, Java, and .NET
+- Use existing IDE, testing tools, and workflow patterns
+
+<img src="https://i.imgur.com/STuD3Cu.png" alt="5"/>
+
+#### AWS Elastic Beanstalk
+
+The AWS Elastic Beanstalk service is a Platform as a Service solution, so a PaaS solution. So that means a platform is provisioned and managed for you onto which you can then deploy code for a Web application.
+
+- Supports Java, .NET, PHP, Node.js, Python, Ruby, Go, and Docker web applications
+- Integrates with VPC
+- Integrates with IAM
+- Can provision most database instances
+- Allows full control of the underlying resources
+- Code is deployed using a WAR file or Git repository
+
+<img src="https://i.imgur.com/2pG9rWs.png" alt="5"/>
+
+| **CloudFormation**                           | **AWS Elastic Beanstalk**                                                                |
+|----------------------------------------------|------------------------------------------------------------------------------------------|
+| "Template-driven provisioning"               | “Web apps made easy"                                                                     |
+| Deploys infrastructure using code            | Deploys applications on EC2 (PaaS)                                                       |
+| Can be used to deploy almost any AWS service | Deploys web applications based on Java, .NET, PHP, Node.js, Python, Ruby, Go, and Docker |
+| Uses JSON or YAML template files             | Uses ZIP or WAR files (or Git)                                                           |
+| Similar to Terraform                         | Similar to Google App Engine                                                             |
+
+#### AWS Developer Tools
+
+The developer tools are used in continuous integration and continuous delivery.
+
+<img src="https://i.imgur.com/3MKUVBf.png" alt="5"/>
+
+<img src="https://i.imgur.com/jbGDdNB.png" alt="5"/>
+
+<img src="https://i.imgur.com/xKDRult.png" alt="5"/>
+
+<img src="https://i.imgur.com/DvQHWF2.png" alt="5"/>
+
+#### AWS X-Ray
+
+- AWS X-Ray helps developers analyze and debug production,
+distributed applications, such as those built using a microservices
+architecture
+
+- AWS X-Ray supports applications running on:
+  - Amazon EC2
+  - Amazon ECS
+  - AWS Lambda
+  - AWS Elastic Beanstalk
+  - Need to integrate the X-Ray SDK with your application and install the X-Ray agent
+
+<img src="https://i.imgur.com/mNmLoyR.png" alt="5"/>
+
+#### AWS OpsWorks
+
+<img src="https://i.imgur.com/7woevpY.png" alt="5"/>
 
 **References**
 
