@@ -61,6 +61,17 @@
     + [AWS Developer Tools](#aws-developer-tools)
     + [AWS X-Ray](#aws-x-ray)
     + [AWS OpsWorks](#aws-opsworks)
+- [Databases and Analytics](#databases-and-analytics)
+    + [Types of Database](#types-of-database)
+    + [Amazon Relational Database Service (RDS)](#amazon-relational-database-service--rds-)
+    + [Amazon Aurora](#amazon-aurora)
+    + [Amazon DynamoDB](#amazon-dynamodb)
+    + [Amazon RedShift](#amazon-redshift)
+    + [Amazon Elastic Map Reduce (EMR)](#amazon-elastic-map-reduce--emr-)
+    + [Amazon ElastiCache](#amazon-elasticache)
+    + [Amazon Athena and AWS Glue](#amazon-athena-and-aws-glue)
+    + [Amazon Kinesis](#amazon-kinesis)
+    + [Other Databases and Analitycs Services](#other-databases-and-analitycs-services)
 
 ## Cloud Computing and AWS
 
@@ -776,7 +787,230 @@ architecture
 
 <img src="https://i.imgur.com/7woevpY.png" alt="5"/>
 
+## Databases and Analytics
+
+#### Types of Database
+
+- **Relational vs Non-Relational**
+
+| **Relational**                                 | **Non-Relational**                                                                     |
+|------------------------------------------------|----------------------------------------------------------------------------------------|
+| Organized by tables, rows and columns          | Varied data storage models                                                             |
+| Rigid schema (SQL)                             | Flexible schema (NoSQL) – data stored in key-value pairs, columns, documents or graphs |
+| Rules enforced within database                 | Rules can be defined in application code (outside database)                            |
+| Typically scaled vertically                    | Scales horizontally                                                                    |
+| Supports complex queries and joins             | Unstructured, simple language that supports any kind of schema                         |
+| Amazon RDS, Oracle, MySQL, IBM DB2, PostgreSQL | Amazon DynamoDB, MongoDB, Redis, Neo4j                                                 |
+
+- **Operational vs Analytical**
+
+| **Operational/Transactional**                                                                                                | **Analytical**                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| Online Transaction Processing (OLTP)                                                                                         | Online Analytics Processing (OLAP) – the source data comes from OLTP DBs                                 |
+| Production DBs that process transactions. E.g. adding customer records, checking stock availability (INSERT, UPDATE, DELETE) | Data warehouse. Typically, separated from the customer facing DBs. Data is extracted for decision making |
+| Short transactions and simple queries                                                                                        | Long transactions and complex queries                                                                    |
+| Relational examples: Amazon RDS, Oracle, IBM DB2, MySQL                                                                      | Relational examples: Amazon RedShift, Teradata, HP Vertica                                               |
+| Non-relational examples: MongoDB, Cassandra, Neo4j, HBase                                                                    | Non-relational examples: Amazon EMR, MapReduce                                                           |
+
+- **Deployment options for databases on AWS**
+
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky"><span style="font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;**Data Store**</span></th>
+    <th class="tg-0pky"><span style="font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;**Use Case**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky">Database on EC2</td>
+    <td class="tg-0pky">- Need full control over instance and database<br>- Third-party database engine (not available in RDS)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Amazon RDS</td>
+    <td class="tg-0pky">- Need traditional relational database<br>- e.g. Oracle, PostgreSQL, Microsoft SQL, MariaDB, MySQL<br>- Data is well-formed and structured</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Amazon DynamoDB</td>
+    <td class="tg-0pky">- NoSQL database<br>- In-memory performance<br>- High I/O needs<br>- Dynamic scaling</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Amazon ElastiCache</td>
+    <td class="tg-0pky">- Fast temporary storage for small amounts of data<br>- In-memory database</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Amazon EMR</td>
+    <td class="tg-0pky">- Analytics workloads using the Hadoop framework</td>
+  </tr>
+</tbody>
+</table>
+
+#### Amazon Relational Database Service (RDS)
+
+- RDS is a **managed relational database**. It runs on EC2 instance and that means you need to choose your instace type to determine the perfomance characteristics for your database, the cpu, the memory and the storage.
+
+- RDS supports the following database engines:
+  - Amazon Aurora
+  - MySQL
+  - MariaDB
+  - Oracle
+  - Microsoft SQL Server
+  - PostgreSQL
+
+**Note: If the database you need is not on the list, you can't use RDS. You have to install it on EC2.**
+
+- Scaling on RDS:
+  - With RDS, we can scale a couple of different ways. **Scaling up or scaling vertically is where we change out instance type**, so here we've moved from a db.m4.large with two CPUs and 8GB RAM up to the M4, which has more processing power and more RAM associated with it.
+  - We can also scale out for **some specific performance characteristics** and we can also implement **disaster recovery** so we can have some high availability **fault tolerance** and disaster recovery for our applications.
 **References**
+
+<img src="https://i.imgur.com/HZNutZj.png" alt="5"/>
+
+- Recap:
+  - RDS uses EC2 instances, so you must choose an instance family/type
+  - Relational databases are known as Structured Query Language (SQL) databases
+  - RDS is an Online Transaction Processing (OLTP) type of database
+  - Easy to setup, highly available, fault tolerant, and scalable
+  - Common use cases include online stores and banking systems
+  - You can encrypt your Amazon RDS instances and snapshots at rest by enabling the encryption option for your Amazon RDS DB instanc (during creation)
+  - Encryption uses AWS Key Management Service (KMS)
+  - Scales up by increasing instance size (compute and storage)
+  - Read replicas option for read heavy workloads (scales out for reads/queries only)
+  - Disaster recovery with Multi-AZ option
+
+#### Amazon Aurora
+
+Amazon Aurora is a proprietary database engine created by AWS.
+
+- Amazon Aurora is an AWS database offering in the RDS family
+- Amazon Aurora is a MySQL and PostgreSQL-compatible relational database built for the cloud
+- Amazon Aurora is up to five times faster than standard MySQL databases and three times faster than standard PostgreSQL databases
+- Amazon Aurora features a distributed, fault-tolerant, self-healing storage system that auto-scales up to 64TB per database instance 
+
+<img src="https://i.imgur.com/gXQjtZh.png" alt="5"/>
+
+| **Aurora Feature**               |                      **Benefit**                                                                                                                                |
+|----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| High performance and scalability | Offers high performance, self-healing storage that scales up to 64TB, point-in-time recovery and continuous backup to S3                                        |
+| DB compatibility                 | Compatible with existing MySQL and PostgreSQL open source databases                                                                                             |
+| Aurora Replicas                  | In-region read scaling and failover target – up to 15 (can use Auto Scaling)                                                                                    |
+| MySQL Read Replicas              | Cross-region cluster with read scaling and failover target – up to 5 (each can have up to 15 Aurora Replicas)                                                   |
+| Global Database                  | Cross-region cluster with read scaling (fast replication / low latency reads). Can remove secondary and promote                                                 |
+| Multi-Master                     | Scales out writes within a region. In preview currently and will not appear on the exam                                                                         |
+| Serverless                       | On-demand, autoscaling configuration for Amazon Aurora - does not support read replicas or public IPs (can only access through VPC or Direct Connect - not VPN) |
+
+#### Amazon DynamoDB
+
+- Fully managed NoSQL database service
+- Key/value store and document store
+- It is a non-relational, key-value type of database
+- Fully serverless service
+- Push button scaling
+
+| **DynamoDB Feature**                               | **Benefit**                                                                                 |
+|----------------------------------------------------|---------------------------------------------------------------------------------------------|
+| Serverless                                         | Fully managed, fault tolerant, service                                                      |
+| Highly available                                   | 99.99% availability SLA – 99.999% for Global Tables!                                        |
+| NoSQL type of database with Name / Value structure | Flexible schema, good for when data is not well structured or unpredictable                 |
+| Horizontal scaling                                 | Seamless scalability to any scale with push button scaling or Auto Scaling                  |
+| DynamoDB Accelerator (DAX)                         | Fully managed in-memory cache for DynamoDB that increases performance (microsecond latency) |
+| Backup                                             | Point-in-time recovery down to the second in last 35 days; On-demand backup and restore     |
+| Global Tables                                      | Fully managed multi-region, multi-master solution                                           |
+
+#### Amazon RedShift
+
+- Amazon Redshift is a fast, fully managed data warehouse that makes it simple and cost-effective to analyze all your data using standard SQL and existing Business Intelligence (BI) tools
+- RedShift is a SQL based data warehouse used for analytics applications
+- RedShift is a relational database that is used for Online Analytics Processing (OLAP) use cases
+- RedShift uses Amazon EC2 instances, so you must choose an instance family/type
+- RedShift always keeps three copies of your data
+- RedShift provides continuous/incremental backups
+
+<img src="https://i.imgur.com/mvdUgvH.png" alt="5"/>
+
+#### Amazon Elastic Map Reduce (EMR)
+
+- Managed cluster platform that simplifies running big data frameworks including Apache Hadoop and Apache Spark
+- Used for processing data for analytics and business intelligence
+- Can also be used for transforming and moving large amounts of data
+- Performs extract, transform, and load (ETL) functions
+
+<img src="https://i.imgur.com/Woq5Z6J.png" alt="5"/>
+
+#### Amazon ElastiCache
+
+- Fully managed implementations Redis and Memcached
+- ElastiCache is a key/value store
+- In-memory database offering high performance and low latency
+- Can be put in front of databases such as RDS and DynamoDB
+- ElastiCache nodes run on Amazon EC2 instances, so you must choose an instance family/type
+
+<img src="https://i.imgur.com/sBsKSrb.png" alt="5"/>
+
+|      **Use Case**         |                                         **Benefit**                                                                                                                         |
+|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Web session store         | In cases with load-balanced web servers, store web session information in Redis so if a server is lost, the session info is not lost, and another web server can pick it up |
+| Database caching          | Use Memcached in front of AWS RDS to cache popular queries to offload work from RDS and return results faster to users                                                      |
+| Leaderboards              | Use Redis to provide a live leaderboard for millions of users of your mobile app                                                                                            |
+| Streaming data dashboards | Provide a landing spot for streaming sensor data on the factory floor, providing live real-time dashboard displays                                                          |
+
+#### Amazon Athena and AWS Glue
+
+- Athena queries data in S3 using SQL
+- Can be connected to other data sources with Lambda
+- Data can be in CSV, TSV, JSON, Parquet and ORC formats
+- Uses a managed Data Catalog (AWS Glue) to store information and schemas about the databases and tables
+
+<img src="https://i.imgur.com/2xfeSRx.png" alt="5"/>
+
+- Fully managed extract, transform and load (ETL) service
+- Used for preparing data for analytics
+- AWS Glue runs the ETL jobs on a fully managed, scale-out Apache Spark environment
+- Works with data lakes (e.g. data on S3), data warehouses (including RedShift), and data stores (including RDS or EC2 databases)
+
+#### Amazon Kinesis
+
+Amazon Kinesis is a service that's made up of multiple different services, but they're all associated with **streaming data**.
+
+Examples of streaming data use cases include:
+- Purchases from online stores
+- Stock prices
+- Game data (statistics and results as the gamer plays)
+- Social network data
+- Geospatial data (think uber.com)
+- IoT sensor data
+
+<img src="https://i.imgur.com/3tka3EO.png" alt="5"/>
+
+- **Kinesis Data Streams**
+  - Producers send data which is stored in shards for up to 7 days
+  - Consumers process the data and save to another service
+- **Amazon Kinesis Data Firehose**
+  - No shards, completely automated and elastically scalable
+  - Saves data directly to another service such as S3, Splunk, RedShift, or Elasticsearch
+- **Amazon Kinesis Data Analytics**
+  - Provides real-time SQL processing for streaming data
+
+#### Other Databases and Analitycs Services
+
+- **AWS Data Pipeline**
+  - Processes and moves data between different AWS compute and storage services
+  - Save results to services including S3, RDS, DynamoDB, and EMR
+- **Amazon QuickSight**
+  - Business intelligence (BI) service
+  - Create and publish interactive BI dashboards for Machine Learning-powered insights
+- **Amazon Neptune**
+  - Fully managed graph database service
+
+- **Amazon DocumentDB**
+  - Fully managed document database service (non-relational)
+  - Supports MongoDB workloads
+  - Queries and indexes JSON data
+- **Amazon QLDB**
+  - Fully managed ledger database for immutable change history
+  - Provides cryptographically verifiable transaction logging
+- **Amazon Managed Blockchain**
+  - Fully managed service for joining public and private networks using Hyperledger Fabric and Ethereum
 
 - https://digitalcloud.training/aws-cloud-computing-concepts/
 - https://digitalcloud.training/aws-global-infrastructure/
