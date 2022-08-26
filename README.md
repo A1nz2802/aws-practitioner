@@ -1,81 +1,89 @@
 # Table of Contents
 - [Cloud Computing and AWS](#cloud-computing-and-aws)
-    + [Cloud Computing vs Traditional IT](#cloud-computing-vs-traditional-it)
-    + [There are 3 types of cloud computing model](#there-are-3-types-of-cloud-computing-model)
-    + [There are 4 types of cloud deployment](#there-are-4-types-of-cloud-deployment)
-    + [Fundamentals of pricing](#fundamentals-of-pricing)
-    + [The AWS Global Infrastructure is made up of](#the-aws-global-infrastructure-is-made-up-of)
-    + [The AWS shared responsability model defines custormer/AWS responsabilities](#the-aws-shared-responsability-model-defines-custormer-aws-responsabilities)
-    + [The 6 advantages of cloud](#the-6-advantages-of-cloud)
+  * [Cloud Computing vs Traditional IT](#cloud-computing-vs-traditional-it)
+  * [There are 3 types of cloud computing model](#there-are-3-types-of-cloud-computing-model)
+  * [There are 4 types of cloud deployment](#there-are-4-types-of-cloud-deployment)
+  * [Fundamentals of pricing](#fundamentals-of-pricing)
+  * [The AWS Global Infrastructure is made up of](#the-aws-global-infrastructure-is-made-up-of)
+  * [The AWS shared responsability model defines custormer/AWS responsabilities](#the-aws-shared-responsability-model-defines-custormer-aws-responsabilities)
+  * [The 6 advantages of cloud](#the-6-advantages-of-cloud)
 - [AWS Identity and Access Managment](#aws-identity-and-access-managment)
-    + [Users, Groups, Roles and Policies](#users--groups--roles-and-policies)
-    + [IAM Best Practices](#iam-best-practices)
+  * [Users, Groups, Roles and Policies](#users--groups--roles-and-policies)
+  * [IAM Best Practices](#iam-best-practices)
 - [AWS Compute Services](#aws-compute-services)
-    + [Benefits of Amazon EC2](#benefits-of-amazon-ec2)
-    + [User Data & Metadata](#user-data---metadata)
-    + [Access Keys](#access-keys)
-    + [AWS Batch](#aws-batch)
-    + [Amazon LightSail](#amazon-lightsail)
-    + [Amazon Elastic Container Service (ECS)](#amazon-elastic-container-service--ecs-)
+  * [Benefits of Amazon EC2](#benefits-of-amazon-ec2)
+  * [User Data & Metadata](#user-data---metadata)
+  * [Access Keys](#access-keys)
+  * [AWS Batch](#aws-batch)
+  * [Amazon LightSail](#amazon-lightsail)
+  * [Amazon Elastic Container Service (ECS)](#amazon-elastic-container-service--ecs-)
 - [AWS Storage Services](#aws-storage-services)
-    + [Amazon Elastic Block Store (EBS)](#amazon-elastic-block-store--ebs-)
-    + [Amazon EBS Snapshots and DLM (Data Lifecycle Manager DLM)](#amazon-ebs-snapshots-and-dlm--data-lifecycle-manager-dlm-)
-    + [EBS vs Instance Store](#ebs-vs-instance-store)
-    + [Amazon Machine Images (AMI)](#amazon-machine-images--ami-)
-    + [Amazon Elastic File System (EFS)](#amazon-elastic-file-system--efs-)
-    + [Amazon Simple Storage (S3)](#amazon-simple-storage--s3-)
-    + [Amazon S3 Storage Classes](#amazon-s3-storage-classes)
-    + [S3 Versioning, Replication, and Lifecycle Rules](#s3-versioning--replication--and-lifecycle-rules)
-    + [Amazon S3 Glacier](#amazon-s3-glacier)
-    + [AWS Storage Gateway](#aws-storage-gateway)
+  * [Amazon Elastic Block Store (EBS)](#amazon-elastic-block-store--ebs-)
+  * [Amazon EBS Snapshots and DLM (Data Lifecycle Manager DLM)](#amazon-ebs-snapshots-and-dlm--data-lifecycle-manager-dlm-)
+  * [EBS vs Instance Store](#ebs-vs-instance-store)
+  * [Amazon Machine Images (AMI)](#amazon-machine-images--ami-)
+  * [Amazon Elastic File System (EFS)](#amazon-elastic-file-system--efs-)
+  * [Amazon Simple Storage (S3)](#amazon-simple-storage--s3-)
+  * [Amazon S3 Storage Classes](#amazon-s3-storage-classes)
+  * [S3 Versioning, Replication, and Lifecycle Rules](#s3-versioning--replication--and-lifecycle-rules)
+  * [Amazon S3 Glacier](#amazon-s3-glacier)
+  * [AWS Storage Gateway](#aws-storage-gateway)
 - [DNS, Elastic Load Balancing, and Auto Scaling](#dns--elastic-load-balancing--and-auto-scaling)
-    + [DNS and Amazon Route 53](#dns-and-amazon-route-53)
-    + [Elasticity: Scaling Up vs Out](#elasticity--scaling-up-vs-out)
-    + [Amazon EC2 Auto Scaling](#amazon-ec2-auto-scaling)
-    + [Load Balancing and High Availability](#load-balancing-and-high-availability)
-    + [Amazon Elastic Load Balancer (ELB)](#amazon-elastic-load-balancer--elb-)
-    + [Elastically Scale the Application](#elastically-scale-the-application)
-    + [Scaling Policies](#scaling-policies)
+  * [DNS and Amazon Route 53](#dns-and-amazon-route-53)
+  * [Elasticity: Scaling Up vs Out](#elasticity--scaling-up-vs-out)
+  * [Amazon EC2 Auto Scaling](#amazon-ec2-auto-scaling)
+  * [Load Balancing and High Availability](#load-balancing-and-high-availability)
+  * [Amazon Elastic Load Balancer (ELB)](#amazon-elastic-load-balancer--elb-)
+  * [Elastically Scale the Application](#elastically-scale-the-application)
+  * [Scaling Policies](#scaling-policies)
 - [Application Services](#application-services)
-    + [Serverless Services](#serverless-services)
-    + [AWS Lambda Functions](#aws-lambda-functions)
-    + [Application Integration Services](#application-integration-services)
-    + [Amazon EventBridge/CloudWatch Events](#amazon-eventbridge-cloudwatch-events)
-    + [Amazon API Gateway](#amazon-api-gateway)
+  * [Serverless Services](#serverless-services)
+  * [AWS Lambda Functions](#aws-lambda-functions)
+  * [Application Integration Services](#application-integration-services)
+  * [Amazon EventBridge/CloudWatch Events](#amazon-eventbridge-cloudwatch-events)
+  * [Amazon API Gateway](#amazon-api-gateway)
 - [Amazon VPC, Networking, and Hybrid](#amazon-vpc--networking--and-hybrid)
-    + [Amazon Virtual Private Cloud (VPC)](#amazon-virtual-private-cloud--vpc-)
-    + [Create a custom VPC](#create-a-custom-vpc)
-    + [Security Groups and Network ACLs](#security-groups-and-network-acls)
-    + [Public, Private and Elastic IP Address](#public--private-and-elastic-ip-address)
-    + [NAT Gateways and NAT Instances](#nat-gateways-and-nat-instances)
-    + [VPC Peering](#vpc-peering)
-    + [Amazon VPN and AWS Direct Connect](#amazon-vpn-and-aws-direct-connect)
-    + [AWS Transit Gateway](#aws-transit-gateway)
-    + [AWS Outposts](#aws-outposts)
+  * [Amazon Virtual Private Cloud (VPC)](#amazon-virtual-private-cloud--vpc-)
+  * [Create a custom VPC](#create-a-custom-vpc)
+  * [Security Groups and Network ACLs](#security-groups-and-network-acls)
+  * [Public, Private and Elastic IP Address](#public--private-and-elastic-ip-address)
+  * [NAT Gateways and NAT Instances](#nat-gateways-and-nat-instances)
+  * [VPC Peering](#vpc-peering)
+  * [Amazon VPN and AWS Direct Connect](#amazon-vpn-and-aws-direct-connect)
+  * [AWS Transit Gateway](#aws-transit-gateway)
+  * [AWS Outposts](#aws-outposts)
 - [Deployment and Automation](#deployment-and-automation)
-    + [Caching and Amazon CloudFront](#caching-and-amazon-cloudfront)
-    + [AWS Global Accelerator](#aws-global-accelerator)
-    + [AWS CloudFormation](#aws-cloudformation)
-    + [AWS Cloud Development Kit (CDK)](#aws-cloud-development-kit--cdk-)
-    + [AWS Elastic Beanstalk](#aws-elastic-beanstalk)
-    + [AWS Developer Tools](#aws-developer-tools)
-    + [AWS X-Ray](#aws-x-ray)
-    + [AWS OpsWorks](#aws-opsworks)
+  * [Caching and Amazon CloudFront](#caching-and-amazon-cloudfront)
+  * [AWS Global Accelerator](#aws-global-accelerator)
+  * [AWS CloudFormation](#aws-cloudformation)
+  * [AWS Cloud Development Kit (CDK)](#aws-cloud-development-kit--cdk-)
+  * [AWS Elastic Beanstalk](#aws-elastic-beanstalk)
+  * [AWS Developer Tools](#aws-developer-tools)
+  * [AWS X-Ray](#aws-x-ray)
+  * [AWS OpsWorks](#aws-opsworks)
 - [Databases and Analytics](#databases-and-analytics)
-    + [Types of Database](#types-of-database)
-    + [Amazon Relational Database Service (RDS)](#amazon-relational-database-service--rds-)
-    + [Amazon Aurora](#amazon-aurora)
-    + [Amazon DynamoDB](#amazon-dynamodb)
-    + [Amazon RedShift](#amazon-redshift)
-    + [Amazon Elastic Map Reduce (EMR)](#amazon-elastic-map-reduce--emr-)
-    + [Amazon ElastiCache](#amazon-elasticache)
-    + [Amazon Athena and AWS Glue](#amazon-athena-and-aws-glue)
-    + [Amazon Kinesis](#amazon-kinesis)
-    + [Other Databases and Analitycs Services](#other-databases-and-analitycs-services)
+  * [Types of Database](#types-of-database)
+  * [Amazon Relational Database Service (RDS)](#amazon-relational-database-service--rds-)
+  * [Amazon Aurora](#amazon-aurora)
+  * [Amazon DynamoDB](#amazon-dynamodb)
+  * [Amazon RedShift](#amazon-redshift)
+  * [Amazon Elastic Map Reduce (EMR)](#amazon-elastic-map-reduce--emr-)
+  * [Amazon ElastiCache](#amazon-elasticache)
+  * [Amazon Athena and AWS Glue](#amazon-athena-and-aws-glue)
+  * [Amazon Kinesis](#amazon-kinesis)
+  * [Other Databases and Analitycs Services](#other-databases-and-analitycs-services)
+- [Management and Governance](#management-and-governance)
+  * [AWS Organizations](#aws-organizations)
+  * [AWS Control Tower](#aws-control-tower)
+  * [AWS Systems Manager](#aws-systems-manager)
+  * [AWS Service Catalog](#aws-service-catalog)
+  * [AWS Config](#aws-config)
+  * [AWS Trusted Advisor](#aws-trusted-advisor)
+  * [AWS Health API and Dashboards](#aws-health-api-and-dashboards)
 
 ## Cloud Computing and AWS
 
-#### Cloud Computing vs Traditional IT
+### Cloud Computing vs Traditional IT
 
 | **Cloud Computing**     | **Traditional IT**                              |
 |-------------------------|-------------------------------------------------|
@@ -85,26 +93,26 @@
 | Rapid elasticity        | Limited scalability                             |
 | Measured service        | Usage is not tipically measured                 |
 
-#### There are 3 types of cloud computing model
+### There are 3 types of cloud computing model
 
 - Infrastructure as a service (IaaS): Managed up to the OS
 - Platform as a service (PaaS): Managed up to the code
 - Software as a service (SaaS): Pure consumption model 
 
-#### There are 4 types of cloud deployment
+### There are 4 types of cloud deployment
 
 - Public Cloud or simple "Cloud" - e.g. AWS, Azure, Google Cloud Platform
 - Hybrid Cloud, mixture of public and private clouds
 - Private Cloud (on-premise), managed in your own data center, e.g. Hyper-V, OpenStack, VMware
 - Multicloud, use private/public clouds from multiple providers 
 
-#### Fundamentals of pricing
+### Fundamentals of pricing
 
 - Compute: CPU/RAM and duration
 - Storage: quantity of data stored or allocated
 - Outbound data transfer: data leaving an AWS Region
 
-#### The AWS Global Infrastructure is made up of
+### The AWS Global Infrastructure is made up of
 
 - AWS Regions
   - A region is a geographical area
@@ -125,7 +133,7 @@
 
 <img src="https://i.imgur.com/tbnnlad.png" alt="1" width="100%"/>
 
-#### The AWS shared responsability model defines custormer/AWS responsabilities
+### The AWS shared responsability model defines custormer/AWS responsabilities
 
 - AWS are responsible for "Security **of** the cloud"
   - AWS is responsible for protecting the infrastructure that runs all of the service offered in the AWS Cloud
@@ -137,7 +145,7 @@
 
 <img src="https://i.imgur.com/Xfq8oNN.png" alt="1" width="100%"/>
 
-#### The 6 advantages of cloud
+### The 6 advantages of cloud
 
 - Trade capital expense for variable expense
 - Benefit from massive economies of scale
@@ -164,7 +172,7 @@ IAM can be used to manage:
 
 <img src="https://i.imgur.com/JWSaDi5.png" alt="1" width="100%"/>
 
-#### Users, Groups, Roles and Policies
+### Users, Groups, Roles and Policies
 
 - IAM User: Is an entity that represents a person or service
 - Groups: Groups are collections of users and have policies attached to them, use groups to assign permissions to users.
@@ -173,7 +181,7 @@ IAM can be used to manage:
 
 <img src="https://digitalcloud.training/wp-content/uploads/2022/02/iam-users-groups-roles-policies.png" alt="2" width="100%"/>
 
-#### IAM Best Practices
+### IAM Best Practices
 
 - Lock away the AWS root user access keys.
 - Create individual IAM users.
@@ -201,7 +209,7 @@ IAM can be used to manage:
 
 <img src="https://i.imgur.com/H5MaQWO.png" alt="3" width="100%"/>
 
-#### Benefits of Amazon EC2
+### Benefits of Amazon EC2
 
 - Elastic computing: easily launch hundreds to thousands of EC2 instances within minutes
 - Completed control: you control the EC2 instances with full root/administrative access
@@ -210,7 +218,7 @@ IAM can be used to manage:
 - Secure: fully integrated with Amazon VPC and sewcurity features
 - Inexpensive: low cost, pay for what you use
 
-#### User Data & Metadata
+### User Data & Metadata
 
 - User Data gives you the ability to run commands when the system is starting
 - Metadata can return information about the instance that's recorded locally
@@ -218,7 +226,7 @@ IAM can be used to manage:
 <img src="https://i.imgur.com/pEREcsS.png" alt="4" width="100%"/>
 <img src="https://i.imgur.com/OfpqWLs.png" alt="5" width="100%"/>
 
-#### Access Keys
+### Access Keys
 
 - Access Keys are configured on the EC2 instances
 - This is **secret information that is stored on the file system of the instance** (it's not a very secure way of storing that information)
@@ -230,13 +238,13 @@ IAM can be used to manage:
 
 <img src="https://i.imgur.com/HoWvQTf.png" alt="5" width="100%"/>
 
-#### AWS Batch 
+### AWS Batch 
 
 - AWS Batch is a service that we can use to run what's called a batch workload on AWS
 
 <img src="https://miro.medium.com/max/1200/0*LhyLjfye1TUn341e" alt="5" width="90%"/>
 
-#### Amazon LightSail
+### Amazon LightSail
 
 - Amazon LightSail is another compute service, and it's very similar to EC2. This service gives you the ability to run virtual servers in the cloud just like EC2 does. The difference is that the interface for it is a lot simpler to use for those who don't really have a strong background in technology. **AWS call it the simple cloud server**
 - Low cost and ideal for users with less technical expertise
@@ -245,7 +253,7 @@ IAM can be used to manage:
 
 <img src="https://i.imgur.com/bJtK82h.png" alt="5" width="50%"/>
 
-#### Amazon Elastic Container Service (ECS)
+### Amazon Elastic Container Service (ECS)
 
 - ECS is a highly scalable, high-performance container orchestration service on AWS
 - In ECS we call it a **task** rather than a container, but it's essentially the same thing
@@ -273,7 +281,7 @@ IAM can be used to manage:
 
 <img src="https://i.imgur.com/rRmaBCt.png" alt="5" width="100%"/>
 
-#### Amazon Elastic Block Store (EBS)
+### Amazon Elastic Block Store (EBS)
 
 - EBS is the storage system that's used by Amazon EC2 and the EBS volume is where OS and any data is stored persistently
 - Each EC2 instance can have one or more EBS volume attached to it, but **you can't actually attach multiple intances to an individual volume** (exists EBS multi-attach and it's under some very specific constraints)
@@ -284,7 +292,7 @@ IAM can be used to manage:
 
 <img src="https://i.imgur.com/enljJRB.png" alt="5" width="100%"/>
 
-#### Amazon EBS Snapshots and DLM (Data Lifecycle Manager DLM)
+### Amazon EBS Snapshots and DLM (Data Lifecycle Manager DLM)
 
 - When we take a snapshot of out EBS volume, we're essentially capturing a point in time state of the data on that volume
 - We can take multiple snapshots of our EBS volume, and  each of these is an incremental copy
@@ -298,7 +306,7 @@ IAM can be used to manage:
 
 <img src="https://i.imgur.com/1KO9AsQ.png" alt="5" width="100%"/>
 
-#### EBS vs Instance Store
+### EBS vs Instance Store
 
 - Instance Store volumes are **physically attached** to the host
 - EBS volumes are **attached over a network** and they are **persistent storage**
@@ -306,7 +314,7 @@ IAM can be used to manage:
 
 <img src="https://i.imgur.com/wVW9aPK.png" alt="5" width="100%"/>
 
-#### Amazon Machine Images (AMI)
+### Amazon Machine Images (AMI)
 
 - An AMI provides the information required to launch an instance
 - An AMI includes the following:
@@ -318,7 +326,7 @@ IAM can be used to manage:
   - AWS Marketplace AMIs: pay to use, generally come packaged with aditional, licensed software
   - My AMIs: AMI's that you create yourself
 
-#### Amazon Elastic File System (EFS)
+### Amazon Elastic File System (EFS)
 
 - EFS is something that we can attach multiple instances to
 - You can event connect instances from different VPC's as well
@@ -327,7 +335,7 @@ IAM can be used to manage:
 
 <img src="https://i.imgur.com/cTtbHbJ.png" alt="5" width="100%"/>
 
-#### Amazon Simple Storage (S3)
+### Amazon Simple Storage (S3)
 
 - S3 service is an **object-based storage system**. We can connected to it over the internet using our browsers and the HTTP protocol
 - In S3, we can create a container called a **bucket**. The bucket is the container into which we can then upload our objects, our files into the bucket.
@@ -350,7 +358,7 @@ IAM can be used to manage:
 
 <img src="https://i.imgur.com/p2PZjgR.png" alt="5" width="100%"/>
 
-#### Amazon S3 Storage Classes
+### Amazon S3 Storage Classes
 
 When we store our objects in S3 buckets, we can choose different storage classes and this determines certain characteristics of how the data is stored and it also determines the price point, how much we pay
 
@@ -366,7 +374,7 @@ When we store our objects in S3 buckets, we can choose different storage classes
 
 <img src="https://i.imgur.com/aNZykhB.png" alt="5" width="100%"/>
 
-#### S3 Versioning, Replication, and Lifecycle Rules
+### S3 Versioning, Replication, and Lifecycle Rules
 
 - Versioning:
   - Versioning is a means of keeping multiple variants of an object in the same bucket
@@ -382,7 +390,7 @@ When we store our objects in S3 buckets, we can choose different storage classes
 
 <img src="https://i.imgur.com/GCIqgKz.png" alt="5" width="100%"/>
 
-#### Amazon S3 Glacier
+### Amazon S3 Glacier
 
 - Extremely low cost and you pay only for what you need with no commitments of upfront fees
 - Two classes Glacier and Glacier Deep Archive
@@ -401,7 +409,7 @@ When we store our objects in S3 buckets, we can choose different storage classes
   - Can apply a policy and lock the policy from future edits
   - Use for compliance objectives and data retention
 
-#### AWS Storage Gateway
+### AWS Storage Gateway
 
 - Hybrid cloud storage service
 - Access cloud storage from on-premises applications
@@ -416,7 +424,7 @@ When we store our objects in S3 buckets, we can choose different storage classes
 
 ## DNS, Elastic Load Balancing, and Auto Scaling
 
-#### DNS and Amazon Route 53 
+### DNS and Amazon Route 53 
 
 <img src="https://i.imgur.com/sPenpsX.png" alt="5" width="100%"/>
 
@@ -433,7 +441,7 @@ When we store our objects in S3 buckets, we can choose different storage classes
 
 <img src="https://i.imgur.com/zjRjyza.png" alt="5" width="100%"/>
 
-#### Elasticity: Scaling Up vs Out
+### Elasticity: Scaling Up vs Out
 
 - Scaling up (vertical scaling): Scaling up means that we add more hardware. We have more memory, more storage space, more network bandwidth, etc. Essentially, we're adding resources to that instance. How do you do this in Amazon resources? For example, with EC2, we might have a T2 instance, so that's a certain instance type, has a certain amount of CPU and RAM. Now **we can always change the instance type** and maybe we move it to C5, now we have an instance with more resources. **It's the same instance we just change the instance type**
 
@@ -447,7 +455,7 @@ When we store our objects in S3 buckets, we can choose different storage classes
 
 <img src="https://i.imgur.com/ITPCZFx.png" alt="5" width="50%"/>
 
-#### Amazon EC2 Auto Scaling
+### Amazon EC2 Auto Scaling
 
 - Amazon EC2 Auto Scaling is a service that will dynamically scale our EC2 instances horizontally, scaling out by launching and terminating EC2 instances
 - Provides elasticity and scalability
@@ -457,7 +465,7 @@ When we store our objects in S3 buckets, we can choose different storage classes
 
 <img src="https://i.imgur.com/OB2g0Gb.png" alt="5" width="100%"/>
 
-#### Load Balancing and High Availability
+### Load Balancing and High Availability
 
 - Fault tolerance is where we have **the ability to recover in the case of something like a component failure**. AWS provides a lot of fault tolerance built-in to their infrastructure and we're able to spread the load between different availability zones so that we have fault tolerance across the AZ because each one is one or more data centers.
 
@@ -468,17 +476,17 @@ When we store our objects in S3 buckets, we can choose different storage classes
 
 <img src="https://live.staticflickr.com/65535/52274577621_5ac5595a63_o.png" alt="5" width="100%"/>
 
-#### Amazon Elastic Load Balancer (ELB)
+### Amazon Elastic Load Balancer (ELB)
 
 <img src="https://live.staticflickr.com/65535/52273696337_c2c2834733_o.png" alt="5" width="100%"/>
 
 <img src="https://live.staticflickr.com/65535/52275258200_d3a2ae8c91_o.png" alt="5" width="100%"/>
 
-#### Elastically Scale the Application
+### Elastically Scale the Application
 
 <img src="https://i.imgur.com/bxvUsDz.png" alt="5" width="100%"/>
 
-#### Scaling Policies
+### Scaling Policies
 
 - Target Tracking: Attempts to keep the group at or close to the metric
 - Simple Scaling: Adjust group size based on a metric
@@ -487,7 +495,7 @@ When we store our objects in S3 buckets, we can choose different storage classes
 
 ## Application Services
 
-#### Serverless Services
+### Serverless Services
 
 - With serverless there are no instances to manage
 - You don’t need to provision hardware
@@ -508,7 +516,7 @@ When we store our objects in S3 buckets, we can choose different storage classes
 
 <img src="https://i.imgur.com/69w41cn.png" alt="5" width="100%"/>
 
-#### AWS Lambda Functions
+### AWS Lambda Functions
 
 - AWS Lambda executes code only when needed and scales automatically
 - You pay only for the compute time you consume (you pay nothing when your code is not running)
@@ -525,7 +533,7 @@ When we store our objects in S3 buckets, we can choose different storage classes
 
 <img src="https://i.imgur.com/YRIIlRT.png" alt="5" width="100%"/>
 
-#### Application Integration Services
+### Application Integration Services
 
 - Amazon Simple Queue Service (SQS)
   - SQS offers a reliable, highly-scalable, hosted queue for storing messages in transit between computers
@@ -564,7 +572,7 @@ When we store our objects in S3 buckets, we can choose different storage classes
 
 <img src="https://i.imgur.com/zeg2qFx.png" alt="5" width="100%"/>
 
-#### Amazon EventBridge/CloudWatch Events 
+### Amazon EventBridge/CloudWatch Events 
 
 - Serverless event bus
 - Used for building event-driven architectures
@@ -572,7 +580,7 @@ When we store our objects in S3 buckets, we can choose different storage classes
 
 <img src="https://i.imgur.com/88wkOcH.png" alt="5" width="100%"/>
 
-#### Amazon API Gateway
+### Amazon API Gateway
 
 - Publish APIs on AWS
 - Create RESTful and Websocket APIs
@@ -583,7 +591,7 @@ When we store our objects in S3 buckets, we can choose different storage classes
 
 ## Amazon VPC, Networking, and Hybrid
 
-#### Amazon Virtual Private Cloud (VPC)
+### Amazon Virtual Private Cloud (VPC)
 
 - A virtual private cloud (VPC) is a virtual network dedicated to your AWS account
 - Analogous to having your own DC inside AWS
@@ -603,11 +611,11 @@ When we store our objects in S3 buckets, we can choose different storage classes
 
 <img src="https://i.imgur.com/DrOF4UY.png" alt="5" width="100%"/>
 
-#### Create a custom VPC
+### Create a custom VPC
 
 <img src="https://i.imgur.com/ExRRKgA.png" alt="5" width="100%"/>
 
-#### Security Groups and Network ACLs
+### Security Groups and Network ACLs
 
 - A **firewall** is essentially a security device wich screens incoming and outgoing connections and checks whether they're going to be allowed or disallowed based on some rules that we can define
 - Network ACLs is Network Access Control List. ACLs is that list of the ports and protocols that you're going to allow
@@ -616,7 +624,7 @@ When we store our objects in S3 buckets, we can choose different storage classes
 
 <img src="https://i.imgur.com/UD1B1tM.png" alt="5" width="100%"/>
 
-#### Public, Private and Elastic IP Address
+### Public, Private and Elastic IP Address
 
 | Name                        | Description                                                   |
 |-----------------------------|---------------------------------------------------------------|
@@ -632,7 +640,7 @@ When we store our objects in S3 buckets, we can choose different storage classes
 |                             | - Associated with a private IP address on the instance        |
 |                             | - Can be moved between instances and Elastic Network Adapters |
 
-#### NAT Gateways and NAT Instances
+### NAT Gateways and NAT Instances
 
 - NAT means Network Address Translation
 
@@ -644,13 +652,13 @@ When we store our objects in S3 buckets, we can choose different storage classes
 
 <img src="https://i.imgur.com/2ez99PB.png" alt="5" width="100%"/>
 
-#### VPC Peering
+### VPC Peering
 
 - We use VPC Peering to connect our VPCs in the same or in different accounts,in the same or different regions, and we want to connect them using private IP addresses.
 
 <img src="https://i.imgur.com/HbIYdFI.png" alt="5" width="100%"/>
 
-#### Amazon VPN and AWS Direct Connect
+### Amazon VPN and AWS Direct Connect
 
 In many circumstances, we're going to want to connect our on-premises data centers to the public cloud, to our AWS VPC. We might also do that for our company offices as well. So there's two ways that we can do this, and that's an Amazon virtual private network, VPN, and also an AWS Direct Connect connection.
 
@@ -668,7 +676,7 @@ In many circumstances, we're going to want to connect our on-premises data cente
 
 <img src="https://i.imgur.com/YQY6gdH.png" alt="5" width="100%"/>
 
-#### AWS Transit Gateway
+### AWS Transit Gateway
 
 Earlier on, we looked at VPC peering and you saw that we had lots of different connections goins between our four VPC, imagine if you have many VPCs, then it's going to get very complicated using VPC Peering to set up internal routing.
 
@@ -676,7 +684,7 @@ You can think of the transit gateway as a network hub that interconnects your VP
 
 <img src="https://i.imgur.com/b9k6usV.png" alt="5" width="100%"/>
 
-#### AWS Outposts
+### AWS Outposts
 
 Sometimes customers want to actually run some of the AWS services in their on premises data center, Outposts allows them to do that.
 
@@ -693,13 +701,13 @@ Sometimes customers want to actually run some of the AWS services in their on pr
 
 ## Deployment and Automation
 
-#### Caching and Amazon CloudFront
+### Caching and Amazon CloudFront
 
 Amazon CloudFront is a service we can use to improve performance for accessing content by caching it around the world. Maybe your website content is sitting in S3 or it's sitting on an EC2 Web server, that content then gets pushed to something called an **edge location**. There's lots of edge locations around the world and they're part of the AWS global infrastructure and that means that your users can now connect to the nearest edge location.
 
 <img src="https://i.imgur.com/WNWv6ua.png" alt="5" width="100%"/>
 
-#### AWS Global Accelerator
+### AWS Global Accelerator
 
 AWS Global Accelerator is another service that we can use to improve the performance of access to our AWS resources. Just like with CloudFront, the AWS Global Accelerator service leverages these edge locations that are around the world
 
@@ -712,7 +720,7 @@ AWS Global Accelerator is another service that we can use to improve the perform
 
 <img src="https://i.imgur.com/m1CpY2X.png" alt="5" width="100%"/>
 
-#### AWS CloudFormation
+### AWS CloudFormation
 
 AWS CloudFormation is a service that we can use to deploy infrastructure on AWS using code that's written in a template file.
 
@@ -725,7 +733,7 @@ AWS CloudFormation is a service that we can use to deploy infrastructure on AWS 
 
 <img src="https://i.imgur.com/qqE6VvE.png" alt="5" width="100%"/>
 
-#### AWS Cloud Development Kit (CDK)
+### AWS Cloud Development Kit (CDK)
 
 - Open-source software development framework to define your cloud application resources using familiar programming languages
 - Preconfigures cloud resources with proven defaults using constructs
@@ -735,7 +743,7 @@ AWS CloudFormation is a service that we can use to deploy infrastructure on AWS 
 
 <img src="https://i.imgur.com/STuD3Cu.png" alt="5"/>
 
-#### AWS Elastic Beanstalk
+### AWS Elastic Beanstalk
 
 The AWS Elastic Beanstalk service is a Platform as a Service solution, so a PaaS solution. So that means a platform is provisioned and managed for you onto which you can then deploy code for a Web application.
 
@@ -756,7 +764,7 @@ The AWS Elastic Beanstalk service is a Platform as a Service solution, so a PaaS
 | Uses JSON or YAML template files             | Uses ZIP or WAR files (or Git)                                                           |
 | Similar to Terraform                         | Similar to Google App Engine                                                             |
 
-#### AWS Developer Tools
+### AWS Developer Tools
 
 The developer tools are used in continuous integration and continuous delivery.
 
@@ -768,7 +776,7 @@ The developer tools are used in continuous integration and continuous delivery.
 
 <img src="https://i.imgur.com/DvQHWF2.png" alt="5"/>
 
-#### AWS X-Ray
+### AWS X-Ray
 
 - AWS X-Ray helps developers analyze and debug production,
 distributed applications, such as those built using a microservices
@@ -783,13 +791,13 @@ architecture
 
 <img src="https://i.imgur.com/mNmLoyR.png" alt="5"/>
 
-#### AWS OpsWorks
+### AWS OpsWorks
 
 <img src="https://i.imgur.com/7woevpY.png" alt="5"/>
 
 ## Databases and Analytics
 
-#### Types of Database
+### Types of Database
 
 - **Relational vs Non-Relational**
 
@@ -817,8 +825,8 @@ architecture
 <table class="tg">
 <thead>
   <tr>
-    <th class="tg-0pky"><span style="font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;**Data Store**</span></th>
-    <th class="tg-0pky"><span style="font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;**Use Case**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></th>
+    <th class="tg-0pky"><span style="font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;Data Store</span></th>
+    <th class="tg-0pky"><span style="font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;Use Case&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></th>
   </tr>
 </thead>
 <tbody>
@@ -845,7 +853,7 @@ architecture
 </tbody>
 </table>
 
-#### Amazon Relational Database Service (RDS)
+### Amazon Relational Database Service (RDS)
 
 - RDS is a **managed relational database**. It runs on EC2 instance and that means you need to choose your instace type to determine the perfomance characteristics for your database, the cpu, the memory and the storage.
 
@@ -878,7 +886,7 @@ architecture
   - Read replicas option for read heavy workloads (scales out for reads/queries only)
   - Disaster recovery with Multi-AZ option
 
-#### Amazon Aurora
+### Amazon Aurora
 
 Amazon Aurora is a proprietary database engine created by AWS.
 
@@ -899,7 +907,7 @@ Amazon Aurora is a proprietary database engine created by AWS.
 | Multi-Master                     | Scales out writes within a region. In preview currently and will not appear on the exam                                                                         |
 | Serverless                       | On-demand, autoscaling configuration for Amazon Aurora - does not support read replicas or public IPs (can only access through VPC or Direct Connect - not VPN) |
 
-#### Amazon DynamoDB
+### Amazon DynamoDB
 
 - Fully managed NoSQL database service
 - Key/value store and document store
@@ -917,7 +925,7 @@ Amazon Aurora is a proprietary database engine created by AWS.
 | Backup                                             | Point-in-time recovery down to the second in last 35 days; On-demand backup and restore     |
 | Global Tables                                      | Fully managed multi-region, multi-master solution                                           |
 
-#### Amazon RedShift
+### Amazon RedShift
 
 - Amazon Redshift is a fast, fully managed data warehouse that makes it simple and cost-effective to analyze all your data using standard SQL and existing Business Intelligence (BI) tools
 - RedShift is a SQL based data warehouse used for analytics applications
@@ -928,7 +936,7 @@ Amazon Aurora is a proprietary database engine created by AWS.
 
 <img src="https://i.imgur.com/mvdUgvH.png" alt="5"/>
 
-#### Amazon Elastic Map Reduce (EMR)
+### Amazon Elastic Map Reduce (EMR)
 
 - Managed cluster platform that simplifies running big data frameworks including Apache Hadoop and Apache Spark
 - Used for processing data for analytics and business intelligence
@@ -937,7 +945,7 @@ Amazon Aurora is a proprietary database engine created by AWS.
 
 <img src="https://i.imgur.com/Woq5Z6J.png" alt="5"/>
 
-#### Amazon ElastiCache
+### Amazon ElastiCache
 
 - Fully managed implementations Redis and Memcached
 - ElastiCache is a key/value store
@@ -954,7 +962,7 @@ Amazon Aurora is a proprietary database engine created by AWS.
 | Leaderboards              | Use Redis to provide a live leaderboard for millions of users of your mobile app                                                                                            |
 | Streaming data dashboards | Provide a landing spot for streaming sensor data on the factory floor, providing live real-time dashboard displays                                                          |
 
-#### Amazon Athena and AWS Glue
+### Amazon Athena and AWS Glue
 
 - Athena queries data in S3 using SQL
 - Can be connected to other data sources with Lambda
@@ -968,7 +976,7 @@ Amazon Aurora is a proprietary database engine created by AWS.
 - AWS Glue runs the ETL jobs on a fully managed, scale-out Apache Spark environment
 - Works with data lakes (e.g. data on S3), data warehouses (including RedShift), and data stores (including RDS or EC2 databases)
 
-#### Amazon Kinesis
+### Amazon Kinesis
 
 Amazon Kinesis is a service that's made up of multiple different services, but they're all associated with **streaming data**.
 
@@ -991,7 +999,7 @@ Examples of streaming data use cases include:
 - **Amazon Kinesis Data Analytics**
   - Provides real-time SQL processing for streaming data
 
-#### Other Databases and Analitycs Services
+### Other Databases and Analitycs Services
 
 - **AWS Data Pipeline**
   - Processes and moves data between different AWS compute and storage services
@@ -1011,6 +1019,95 @@ Examples of streaming data use cases include:
   - Provides cryptographically verifiable transaction logging
 - **Amazon Managed Blockchain**
   - Fully managed service for joining public and private networks using Hyperledger Fabric and Ethereum
+
+## Management and Governance
+
+### AWS Organizations
+
+- AWS organizations allows you to consolidate multiple AWS accounts into an organization that you create and centrally manage
+- Available in two feature sets:
+  - Consolidated Billing
+  - All features
+- Includes root accounts and organizational units
+- Policies are applied to root accounts or OUs
+- Consolidated billing includes:
+  - Paying Account – independent and cannot access resources of other accounts
+  - Linked Accounts – all linked accounts are independent
+
+<img src="https://i.imgur.com/tANsioY.png" alt="5"/>
+
+### AWS Control Tower
+
+- Simplifies the process of **creating multi-account environments**
+- Sets up governance, compliance, and security guardrails for you
+- Integrates with other services and features to setup the environment for you including:
+- AWS Organizations, SCPs, OUs, AWS Config, AWS CloudTrail, Amazon S3, Amazon SNS, AWS CloudFormation, AWS Service Catalog, AWS Single Sign-On (SSO)
+
+Examples of guardrails AWS Control Tower can configure for you include:
+- Disallowing public write access to Amazon Simple Storage Service (Amazon S3) buckets
+- Disallowing access as a root user without multifactor authentication
+- Enabling encryption for Amazon EBS volumes attached to Amazon EC2 instances
+
+### AWS Systems Manager
+
+- Manages many AWS resources including Amazon EC2, Amazon S3, Amazon RDS etc.
+- Systems Manager Components:
+  - Automation
+  - Run Command
+  - Inventory
+  - Patch Manager
+  - Session Manager
+  - Parameter Store
+
+<img src="https://i.imgur.com/vPU7SmJ.png" alt="5"/>
+
+- **Inventory**
+  - We then have inventory where all of the managed systems in systems manager report in information about themselves. We can see things like the operating system version, information about the server roles that are installed, the applications that are installed and so on
+- **Patch Manager**
+  - Deploy operating system and software patches automatically across large groups of Amazon EC2 or onpremises instances
+- **Compliance**
+  - Scan managed instances for patch compliance and configuration inconsistencies
+- **Session Manager**
+  - Secure remote management of your instances at scale without logging into your servers
+  - Replaces the need for bastion hosts, SSH, or remote PowerShell
+- **Parameter Store**
+  - Parameter Store provides secure, hierarchical storage for configuration data management and secrets management
+
+### AWS Service Catalog
+
+- AWS Service Catalog allows organizations to **create and manage catalogs of IT services** that are approved for use on AWS
+- AWS Service Catalog allows you to **centrally manage** commonly deployed IT services
+- IT services can include virtual machine images, servers, software, and databases and multi-tier application architectures
+- Enables users to quickly deploy only the approved IT services they need
+
+<img src="https://i.imgur.com/t1KZUz2.png" alt="5"/>
+
+### AWS Config
+
+AWS Config is a service we can use to **audit the configurations of our AWS resources**, and it can be used for compliance reasons. We might want to validate that our resources are configured in a certain way. We can define how we want them to be configured and then check whether they actually comply with that or not.
+
+<img src="https://i.imgur.com/TUyXAeK.png" alt="5"/>
+
+|      **Example Rule**                    |                      **Description**                                                                                                                                         |
+|------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| s3-bucket-server-side-encryption-enabled | Checks that your Amazon S3 bucket either has S3 default encryption enabled or that the S3 bucket policy explicitly denies put-object requests without server side encryption |
+| restricted-ssh                           | Checks whether security groups that are in use disallow unrestricted incoming SSH traffic                                                                                    |
+| rds-instance-public-access-check         | Checks whether the Amazon Relational Database Service (RDS) instances are not publicly accessible                                                                            |
+| cloudtrail-enabled                       | Checks whether AWS CloudTrail is enabled in your AWS account                                                                                                                 |
+
+### AWS Trusted Advisor
+
+- Trusted Advisor is an online resource that helps to reduce cost, increase performance and improve security by optimizing your AWS environment
+- Trusted Advisor provides real time guidance to help you provision your resources following best practices
+- Advisor will advise you on **Cost Optimization, Performance, Security, and Fault Tolerance**
+
+### AWS Health API and Dashboards
+
+- AWS Personal Health Dashboard provides alerts and remediation guidance when AWS is experiencing events that may impact you
+- Personal Health Dashboard gives you a personalized view into the performance and availability of the AWS services underlying your AWS resources
+- Also provides proactive notification to help you plan for scheduled activities
+
+<img src="https://i.imgur.com/Hk0iFIw.png" alt="5"/>
 
 - https://digitalcloud.training/aws-cloud-computing-concepts/
 - https://digitalcloud.training/aws-global-infrastructure/
