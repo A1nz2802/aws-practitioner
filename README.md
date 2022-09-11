@@ -80,6 +80,17 @@
   * [AWS Config](#aws-config)
   * [AWS Trusted Advisor](#aws-trusted-advisor)
   * [AWS Health API and Dashboards](#aws-health-api-and-dashboards)
+- [AWS Cloud Security and Identity](#aws-cloud-security-and-identity)
+  * [Identity Providers and Federation](#identity-providers-and-federation)
+  * [AWS Directory Services](#aws-directory-services)
+  * [Protecting Secrets](#protecting-secrets)
+  * [Encryption](#encryption)
+  * [Logging and Auditing](#logging-and-auditing)
+  * [Detect and Response](#detect-and-response)
+  * [Firewalls and DDoS Protection](#firewalls-and-ddos-protection)
+  * [Compliance Services](#compliance-services)
+  * [Security Management and Support](#security-management-and-support)
+  * [Penetration Testing](#penetration-testing)
 
 ## Cloud Computing and AWS
 
@@ -1109,7 +1120,296 @@ AWS Config is a service we can use to **audit the configurations of our AWS reso
 
 <img src="https://i.imgur.com/Hk0iFIw.png" alt="5"/>
 
-- https://digitalcloud.training/aws-cloud-computing-concepts/
-- https://digitalcloud.training/aws-global-infrastructure/
-- https://digitalcloud.training/aws-billing-and-pricing/
-- https://digitalcloud.training/aws-compute-services/
+## AWS Cloud Security and Identity
+
+### Identity Providers and Federation
+
+<img src="https://i.imgur.com/y4HhDKA.png" alt="5"/>
+
+<img src="https://i.imgur.com/me7dLUv.png" alt="5"/>
+
+<img src="https://i.imgur.com/wPnlw8f.png" alt="5"/>
+
+### AWS Directory Services
+
+- Fully managed AWS services on AWS infrastructure
+- Best choice if you have more than 5000 users and/or need a trust relationship set up
+- You can setup trust relationships to extend authentication from on-premises Active Directories into the AWS cloud
+- On-premise users and groups can access resources in either domain using SSO
+- Can be used as a standalone AD in the AWS cloud
+
+<img src="https://i.imgur.com/4I5edD5.png" alt="5"/>
+
+- AD Connector is a directory gateway for redirecting directory requests to your on-premise Active Directory.
+- AD Connector eliminates the need for directory synchronization and the cost and complexity of hosting a federation infrastructure
+- Connects your existing on-premise AD to AWS
+- Best choice when you want to use an existing Active Directory with AWS services.
+
+<img src="https://i.imgur.com/8HQV3JX.png" alt="5"/>
+
+<table>
+<thead>
+  <tr>
+    <th><span>Directory Service</span></th>
+    <th><span>Service Description</span></th>
+    <th><span>Use Case</span></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>AWS Directory Service<br>for Microsoft Active<br>Directorys</td>
+    <td>AWS-managed full Microsoft AD<br>running on Windows Server 2012 R2</td>
+    <td>Enterprises that want hosted Microsoft<br>Active Directory</td>
+  </tr>
+  <tr>
+    <td>AD Connector</td>
+    <td>Allows on-premises users to log into<br>AWS services with their existing AD<br>credentials</td>
+    <td>Single sign-on for on-premises<br>employees</td>
+  </tr>
+  <tr>
+    <td>Simple AD</td>
+    <td>Low scale, low cost, AD<br>implementation based on Samba</td>
+    <td>Simple user directory, or you need<br>LDAP compatibility</td>
+  </tr>
+</tbody>
+</table>
+
+### Protecting Secrets
+
+- **Systems Manager Parameter Store**
+  - Provides secure, hierarchical storage for configuration data management and secrets management
+  - It is highly scalable, available, and durable
+  - You can store data such as passwords, database strings, and license codes as parameter values
+  - You can store values as plaintext (unencrypted data) or ciphertext (encrypted data)
+  - You can then reference values by using the unique name that you specified when you created the parameter
+
+- **AWS Secrets Manager**
+  - Similar to Parameter Store
+  - Allows native and automatic rotation of keys
+  - Fine-grained permissions
+  - Central auditing for secret rotation
+
+### Encryption
+
+- **Encryption at rest**
+
+<img src="https://i.imgur.com/yVfpC8r.png" alt="5"/>
+
+- **Asymmetric encryption**
+  - Asymmetric encryption is also known as public key cryptography
+  - Messages encrypted with the public key can only be decrypted with the private key
+  - Messages encrypted with the private key can be decrypted with the public key
+  - Examples include SSL/TLS and SSH
+
+<img src="https://i.imgur.com/GX92ONh.png" alt="5"/>
+
+- **Symmetric encryption**
+  - There's just one key involved, the same key is being used for encryption and decryption
+
+<img src="https://i.imgur.com/LbKyYQw.png" alt="5"/>
+
+- **AWS Certificate Manager (ACM)**
+  - Create, store and renew SSL/TLS X.509 certificates
+  - Single domains, multiple domain names and wildcards
+  - Integrates with several AWS services including:
+    - Elastic Load Balancing
+    - Amazon CloudFront
+    - AWS Elastic Beanstalk
+    - AWS Nitro Enclaves
+    - AWS CloudFormation
+
+- **AWS Key Management Service (KMS)**
+<img src="https://i.imgur.com/sUN3KpA.png" alt="5"/>
+
+- **AWS CloudHSM**
+  - AWS CloudHSM is a cloud-based hardware security module (HSM)
+  - Generate and use your own encryption keys on the AWS Cloud
+  - Manage your own encryption keys using FIPS 140-2 Level 3 validated HSMs
+  - CloudHSM runs in your VPC
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-fymr{border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky"></th>
+    <th class="tg-0pky">CloudHSM</th>
+    <th class="tg-0pky">AWS KMS</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-fymr">Tenancy</td>
+    <td class="tg-0pky">Single-tenant HSM</td>
+    <td class="tg-0pky">Multi-tenant AWS service</td>
+  </tr>
+  <tr>
+    <td class="tg-fymr">Availability</td>
+    <td class="tg-0pky">Customer-managed durability and<br>available</td>
+    <td class="tg-0pky">Highly available and durable key storage<br>and management</td>
+  </tr>
+  <tr>
+    <td class="tg-fymr">Root of Trust</td>
+    <td class="tg-0pky">Customer managed root of trust</td>
+    <td class="tg-0pky">AWS managed root of trust</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">FIPS 140-2</td>
+    <td class="tg-0lax">Level 3</td>
+    <td class="tg-0lax">Level 2 / Level 3 in some areas</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">3rd Party Support</td>
+    <td class="tg-0lax">Broad 3rd Party Support</td>
+    <td class="tg-0lax">Broad AWS service support</td>
+  </tr>
+</tbody>
+</table>
+
+### Logging and Auditing
+
+- **Amazon CloudWatch Logs**
+  - Gather application and system logs in CloudWatch
+  - Defined expiration policies and KMS encryption
+
+<img src="https://i.imgur.com/miCUIxD.png" alt="5"/>
+
+- **AWS CloudTrail**
+  - CloudTrail logs API activity for auditing
+  - By default, management events are logged and retained for 90 days
+  - A CloudTrail Trail logs any events to S3 for indefinite retention
+  - Trail can be within Region or all Regions
+  - CloudWatch Events can triggered based on API calls in CloudTrail
+  - Events can be streamed to CloudWatch Logs
+
+- **VPC Flow Logs**
+  - Flow Logs capture information about the IP traffic going to and from network interfaces in a VPC
+  - Flow log data is stored using Amazon CloudWatch Logs
+  - Flow logs can be created at the following levels:
+    - VPC
+    - Subnet
+    - Network interface
+
+<img src="https://i.imgur.com/zkpCShN.png" alt="5"/>
+
+- **Access Logs**
+  - **Elastic Load Balancing Access Logs**
+    - Capture detailed information about requests sent to the load balancer
+    - Use to analyze traffic patterns and troubleshoot issues
+    - Can identify requester, IP, request type etc.
+    - Can be optionally stored and retained in S3.
+  - **S3 Access Logs**
+    - Provides detailed records for the requests that are made to a bucket
+    - Details include the requester, bucket name, request time, request action, response status, and error code (if applicable)
+    - Disabled by default
+
+### Detect and Response
+
+- **Amazon Detective**
+  - Analyze, investigate, and quickly identify the root cause of potential security issues or suspicious activities
+  - Automatically collects data from AWS resources
+  - Uses machine learning, statistical analysis, an graph theory
+  - Creates a unified, interactive view of resources, users and interactions between them
+  - Data sources include VPC Flow Logs, CloudTrail, and GuardDuty
+
+- **AWS GuardDuty**
+  - Intelligent threat detection service
+  - Detects account compromise, instance compromise, malicious reconnaissance, and bucket compromise
+  - Continuous monitoring for events across:
+    - AWS CloudTrail Management Events
+    - AWS CloudTrail S3 Data Events
+    - Amazon VPC Flow Logs
+    - DNS Logs
+
+- **Amazon Macie**
+  - Macie is a fully managed data security and data privacy service
+  - Uses machine learning and pattern matching to discover, monitor, and help you protect your sensitive data on Amazon S3
+  - Macie enables security compliance and preventive security
+  - Can Identify a variety of data types, including PII, Protected Health Information (PHI), regulatory documents, API keys, and secret keys
+
+<img src="https://i.imgur.com/QU9LmnK.png" alt="5"/>
+
+### Firewalls and DDoS Protection
+
+- **AWS Web Application Firewall (WAF)**
+  - AWS WAF is a web application firewall
+  - WAF lets you create rules to filter web traffic based on conditions that include IP addresses, HTTP headers and body, or custom URIs
+  - WAF makes it easy to create rules that block common web exploits like SQL injection and cross site scripting
+  - The rules are known as Web ACLs
+
+<img src="https://i.imgur.com/rWJTp19.png" alt="5"/>
+
+- **AWS Shield**
+  - AWS Shield is a managed Distributed Denial of Service (DDoS) protection service
+  - Safeguards web application running on AWS with always-on detection and automatic inline mitigations
+  - Helps to minimize application downtime and latency
+  - Two tiers
+    - Standard – no cost
+    - Advanced - $3k USD per month and 1 year commitment
+  - Integrated with Amazon CloudFront (standard included by default)
+
+### Compliance Services
+
+- **AWS Artifact**
+  - AWS Artifact provides on-demand access to AWS’ security and compliance reports and select online agreements
+  - Reports available in AWS Artifact include:
+    - Service Organization Control (SOC) reports
+    - Payment Card Industry (PCI) reports
+  - Provides certifications from accreditation bodies across geographies and compliance verticals that validate the implementation and operating effectiveness of **AWS security controls**
+  - Agreements available in AWS Artifact include the Business Associate Addendum (BAA) and the Nondisclosure Agreement (NDA)
+
+### Security Management and Support
+
+- **AWS Security Hub**
+  - Provides a comprehensive view of security alerts and security posture across AWS accounts
+  - Aggregates, organizes, and prioritizes security alerts, or findings, from multiple AWS services
+  - Continuously monitors your environment using automated security checks
+  - Configure security standards to validate against
+    - AWS Foundational Security Best Practices v1.0.0
+    - CIS AWS Foundations Benchmark v1.2.0
+    - PCI DSS v3.2.1
+
+- **AWS Security Bulletins**
+  - Security and privacy events affecting AWS services are published (also has an RSS feed) 
+
+<img src="https://i.imgur.com/rhJAW4f.png" alt="5"/>
+
+- **AWS Trust & Safety Team**
+  - Contact the AWS Trust & Safety team if AWS resources are being used for:
+    - Spam
+    - Port scanning
+    - Denial-of-service attacks
+    - Intrusion attempts
+    - Hosting of objectionable or copyrighted content
+    - Distributing malware
+  - Email address is: abuse@amazonaws.com
+
+### Penetration Testing
+
+- Penetration testing is the practice of testing one’s own application’s security for vulnerabilities by simulating an attack
+- AWS allows penetration testing without prior approval for 8 AWS services
+
+- **Permitted services**
+  - Amazon EC2 instances, NAT Gateways, and Elastic Load Balancers
+  - Amazon RDS
+  - Amazon CloudFront
+  - Amazon Aurora
+  - Amazon API Gateways
+  - AWS Lambda and Lambda Edge functions
+  - Amazon Lightsail resources
+  - Amazon Elastic Beanstalk environments
+
+- **Prohibited Activities**
+  - DNS zone walking via Amazon Route 53 Hosted Zones
+  - Denial of Service (DoS), Distributed Denial of Service (DDoS), Simulated DoS, Simulated DDoS Port flooding
+  - Protocol flooding
+  - Request flooding (login request flooding, API request flooding)
