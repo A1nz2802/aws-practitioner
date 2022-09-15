@@ -91,6 +91,18 @@
   * [Compliance Services](#compliance-services)
   * [Security Management and Support](#security-management-and-support)
   * [Penetration Testing](#penetration-testing)
+- [Architecting for the Cloud](#architecting-for-the-cloud)
+  * [AWS Well Architected](#aws-well-architected)
+  * [AWS Well-Architected Framework](#aws-well-architected-framework)
+- [Accounts, Billing and Support](#accounts--billing-and-support)
+  * [AWS Pricing Fundamentals](#aws-pricing-fundamentals)
+  * [Amazon EC2 Pricing Options](#amazon-ec2-pricing-options)
+  * [Amazon EC2 Pricing Use Cases](#amazon-ec2-pricing-use-cases)
+  * [Pricing for other AWS Services](#pricing-for-other-aws-services)
+  * [AWS Support Plans](#aws-support-plans)
+  * [Consolidated Billing](#consolidated-billing)
+  * [AWS Budgets](#aws-budgets)
+  * [AWS Cost Management Tools](#aws-cost-management-tools)
 
 ## Cloud Computing and AWS
 
@@ -1413,3 +1425,339 @@ AWS Config is a service we can use to **audit the configurations of our AWS reso
   - Denial of Service (DoS), Distributed Denial of Service (DDoS), Simulated DoS, Simulated DDoS Port flooding
   - Protocol flooding
   - Request flooding (login request flooding, API request flooding)
+
+## Architecting for the Cloud
+
+### AWS Well Architected
+
+- AWS Well-Architected helps cloud architects build secure, high-performing, resilient, and efficient infrastructure for their applications and workloads
+- Based on 5 pillars:
+  - Operational Excellence
+  - Security
+  - Reliability
+  - Performance Efficiency
+  - Cost Optimization
+
+Consists of:
+- AWS Well-Architected Guidance
+- AWS Well-Architected Tool
+- AWS Well-Architected Lenses
+- AWS Architecture Center
+
+### AWS Well-Architected Framework
+
+Helps you understand the pros and cons of decisions you make while building systems on AWS
+Based on 5 pillars:
+- **Operational Excellence Pillar**
+  - Support development and run workloads effectively
+  - Gain insight into workload operations
+  - Continuously improve processes and procedures to deliver business value
+  - Best practices for operational excellence:
+    - Perform operations as code
+    - Make frequent, small, reversible changes
+    - Refine operations procedures frequently
+    - Anticipate failure
+    - Learn from all operational failures
+
+- **Security Pillar**
+  - Protect data, systems, and assets to take advantage of cloud technologies to improve your security
+  - Best practices for security:
+    - Implement a strong identity foundation
+    - Enable traceability
+    - Apply security at all layers
+    - Automate security best practices
+    - Protect data in transit and at rest
+    - Keep people away from data
+    - Prepare for security events
+
+- **Reliability Pillar**
+  - Ensuring a workload can perform its intended function correctly and consistently when it’s expected to
+  - This includes the ability to operate and test the workload through its total lifecycle
+  - Best practices for reliability:
+    - Automatically recover from failure
+    - Test recovery procedures
+    - Scale horizontally to increase aggregate workload availability
+    - Stop guessing capacity
+    - Manage change in automation
+
+- **Performance Efficiency Pillar**
+  - The ability to use computing resources efficiently to meet system requirements, and to maintain that efficiency as demand changes and technologies evolve
+  - Best practices for performance efficiency:
+    - Democratize advanced technologies
+    - Go global in minutes
+    - Use serverless architectures
+    - Experiment more often
+    - Consider mechanical sympathy
+
+- **Cost Optimization Pillar**
+  - The ability to run systems to deliver business value at the lowest price point
+  - Best practices for cost optimization:
+    - Implement Cloud Financial Management
+    - Adopt a consumption model
+    - Measure overall efficiency
+    - Stop spending money on undifferentiated heavy lifting
+    - Analyze and attribute expenditure
+
+## Accounts, Billing and Support
+
+### AWS Pricing Fundamentals
+
+<img src="https://i.imgur.com/ynxFb4X.png" alt="5"/>
+
+**Pay-as-you-go**
+- Easily adapt to changing business needs
+- Improved responsiveness to change
+- Adapt based on needs, not forecasts
+- Reduce risk over overpositioning of missing capacity
+
+
+**Save when you reserve**
+- Invest in reserved capacity (e.g. RDS and EC2)
+- Save up to 75% compared to on-demand (pay-asyou-go)
+- The more you pay upfront the greater the discount
+
+
+**Pay less by using more**
+- Pay less using volume-based discounts
+- Tiered pricing means the more you use the lower the unit pricing
+
+### Amazon EC2 Pricing Options
+
+<img src="https://i.imgur.com/DeupFuz.png" alt="5"/>
+
+<img src="https://i.imgur.com/E7CIw7h.png" alt="5"/>
+
+<img src="https://i.imgur.com/529hHCY.png" alt="5"/>
+
+<img src="https://i.imgur.com/nos6X3j.png" alt="5"/>
+
+<img src="https://i.imgur.com/Gj0CI83.png" alt="5"/>
+
+<img src="https://i.imgur.com/XPg5dva.png" alt="5"/>
+
+<img src="https://i.imgur.com/3sN4kaU.png" alt="5"/>
+
+<img src="https://i.imgur.com/Y9bOIia.png" alt="5"/>
+
+### Amazon EC2 Pricing Use Cases
+
+<img src="https://i.imgur.com/4s5h1vr.png" alt="5"/>
+
+<img src="https://i.imgur.com/m6P8fco.png" alt="5"/>
+
+### Pricing for other AWS Services
+
+- **Amazon S3 Pricing**
+  - Storage class – e.g. Standard or IA
+  - Storage quantity – data volume stored in your buckets on a per GB basis
+  - Number of requests – the number and type of requests, e.g. GET, PUT, POST, LIST, COPY
+  - Lifecycle transitions requests – moving data between storage classes
+  - Data transfer – data transferred out of an S3 region is charged
+
+- **Amazon S3 Glacier Pricing**
+  - Three options for access to archives, listed in the table below:
+
+<table>
+<thead>
+  <tr>
+    <th></th>
+    <th>Expedited</th>
+    <th>Standard</th>
+    <th>Bulk</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><b>Data Access Time</b></td>
+    <td>1-5 minutes</td>
+    <td>3-5 hours</td>
+    <td>5-12 hours</td>
+  </tr>
+  <tr>
+    <td><b>Data retrievals</b></td>
+    <td>$0.03 per GB</td>
+    <td>$0.01 per GB</td>
+    <td>$0.0025 per GB</td>
+  </tr>
+  <tr>
+    <td><b>Retrieval requests</b></td>
+    <td>On-Demand: $0.01 per request<br>Provisioned: $100 per<br>Provisioned Capacity Unit</td>
+    <td>$0.050 per 1,000<br>requests</td>
+    <td>$0.025 per 1,000 requests</td>
+  </tr>
+</tbody>
+</table>
+
+- **Amazon EBS Pricing**
+  - **Volumes:** volume storage for all EBS volumes type is charged by the amount of GB provisioned per month
+  - **Snapshots:** based on the amount of space consumed by snapshots in S3. Copying snapshots is charged on the amount of data copied across regions
+  - **Data transfer:** inbound data transfer is free, outbound data transfer charges are tiered
+
+- **Amazon RDS Pricing**
+  - **Clock hours of server uptime**: amount of time the DB instance is running
+  - **Database characteristics**: e.g. database engine, size and memory class
+  - **Database purchase type**: e.g. On-Demand, Reserved.
+  - **Number of database instances**
+  - **Provisioned storage**: backup is included up to 100% of the size of the DB
+  - **Additional storage**: the amount of storage in addition to the provisioned storage is charged per GB per month
+  - **Requests**: the number of input and output requests to the DB
+  - **Deployment type**: single AZ or multi-AZ
+  - **Reserved Instances**: RDS RIs can be purchased with No Upfront, Partial Upfront, or All Upfront terms. Available for Aurora, MySQL, MariaDB, Oracle and SQL Server
+
+- **Amazon DynamoDB Pricing**
+  - Charged for reading, writing, and storing data
+  - **On-demand capacity mode**
+    - Charged for reads and writes
+    - No need to specify how much capacity is required
+    - Good for unpredictable workloads
+  - **Provisioned capacity mode**
+    - Specify number of reads and writes per second
+    - Can use Auto Scaling
+    - Good for predictable workloads
+    - Consistent traffic or gradual changes
+
+- **Amazon CloudFront Pricing**
+  - **Traffic distribution:** data transfer and request pricing, varies across regions, and is based on the edge location from which the content is served
+  - **Requests:** the number and type of requests (HTTP or HTTPS) and the geographic region in which they are made
+  - **Data transfer out:** quantity of data transferred out of CloudFront edge locations
+  - There are additional chargeable items such as invalidation requests, field-level encryption requests, and custom SSL certificates
+
+- **AWS Lambda Pricing**
+  - **Number of requests**
+  - **Duration of request**: rounded up to the nearest millisecond
+  - Price is dependent on the amount of memory allocated to the function
+  - Free tier includes 1M free requests per month and 400,000 GB-seconds of compute time
+
+### AWS Support Plans
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-fymr{border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky"></th>
+    <th class="tg-fymr">Developer</th>
+    <th class="tg-fymr">Business</th>
+    <th class="tg-fymr">Enterprise</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky">AWS Trusted Advisor Best<br>Practice Checks</td>
+    <td class="tg-0pky">7 Core checks</td>
+    <td class="tg-0pky">Full set of checks</td>
+    <td class="tg-0pky">Full set of checks</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Enhanced Technical Support</td>
+    <td class="tg-0pky">- Business hours email<br>access to Cloud Support<br>Associates<br>- Unlimited cases / 1 primary contact</td>
+    <td class="tg-0pky">- 24x7 phone, email, and chat<br>access to Cloud Support<br>Engineers<br>- Unlimited cases / unlimitedcontacts (IAM supported)</td>
+    <td class="tg-0pky">- 24x7 phone, email, and chat access<br>to Cloud Support Engineers<br>- Unlimited cases / unlimitedcontacts (IAM supported)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Case Severity / Response<br>Times*</td>
+    <td class="tg-0pky">- General guidance: &lt; 24<br>hours**<br>- System impaired: &lt; 12hours**</td>
+    <td class="tg-0pky">- General guidance: &lt; 24 hours<br>- System impaired: &lt; 12 hours<br>- Production system impaired: &lt; 4 hours<br>- Production system down: &lt; 1 hour</td>
+    <td class="tg-0pky">- General guidance: &lt; 24 hours<br>- System impaired: &lt; 12 hours<br>- Production system impaired: &lt; 4 hours<br>- Production system down: &lt; 1 hour<br>- Business-critical system down: &lt; 15 minutes</td>
+  </tr>
+</tbody>
+</table>
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-fymr{border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky"></th>
+    <th class="tg-fymr">Developer</th>
+    <th class="tg-fymr">Business</th>
+    <th class="tg-fymr">Enterprise</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky">Architectural Guidance<br></td>
+    <td class="tg-0pky">General</td>
+    <td class="tg-0pky">Contextual to your usecases</td>
+    <td class="tg-0pky">Consultative review and guidance based on your<br>applications</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Programmatic Case<br>Management</td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky">AWS Support API<br></td>
+    <td class="tg-0pky">AWS Support API</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Proactive Programs and<br>Services<br></td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky">Access to Infrastructure<br>Event Management for<br>additional fee<br></td>
+    <td class="tg-0pky">- Infrastructure Event Management<br>- Well-Architected Reviews<br>- Access to proactive reviews, workshops, and<br> deep dives<br></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Technical Account<br>Management</td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Designated Technical Account Manager (TAM) to<br>proactively monitor your environment and assist<br>with optimization and coordinate access to<br>programs and AWS experts</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Account Assistance</td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Concierge Support Team</td>
+  </tr>
+</tbody>
+</table>
+
+### Consolidated Billing
+
+Consolidated Billing is a **feature of AWS Organizations**, has the following benefits:
+
+- One bill: You get one bill for multiple accounts
+  - **Easy tracking**: You can track the charges across multiple accounts and download the combined cost and usage data
+  - **Combined usage**: You can combine the usage across all accounts in the organization to share the volume pricing discounts and Reserved Instance discounts
+  - **No extra fee**: Consolidated billing is offered at no additional cost
+
+<img src="https://i.imgur.com/yphOpdu.png" alt="5"/>
+
+### AWS Budgets
+
+<img src="https://i.imgur.com/04RnZm5.png" alt="5"/>
+
+### AWS Cost Management Tools
+
+- **AWS Cost Explorer**
+  - The AWS Cost Explorer is a free tool that allows you to view charts of your costs
+  - You can view cost data for the past 13 months and forecast how much you are likely to spend over the next three months
+  - Cost Explorer can be used to discover patterns in how much you spend on AWS resources over time and to identify cost problem areas
+  - Cost Explorer can help you to identify service usage statistics such as:
+    - Which services you use the most
+    - View metrics for which AZ has the most traffic
+    - Which linked account is used the most
+
+- **AWS Cost & Usage Report**
+  - Publish AWS billing reports to an Amazon S3 bucket
+  - Reports break down costs by:
+  - Hour, day, month, product, product resource, tags
+  - Can update the report up to three times a day
+  - Create, retrieve, and delete your reports using the AWS CUR API Reference
+
+- **AWS Price List API**
+  - Query the prices of AWS services
+  - **Price List Service API** (AKA the Query API) – query with JSON
+  - **AWS Price List API** (AKA the Bulk API) – query with HTML
+  - Alerts via Amazon SNS when prices change
