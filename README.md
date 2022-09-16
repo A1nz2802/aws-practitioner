@@ -103,6 +103,14 @@
   * [Consolidated Billing](#consolidated-billing)
   * [AWS Budgets](#aws-budgets)
   * [AWS Cost Management Tools](#aws-cost-management-tools)
+- [Migration, Machine Learning and More](#migration--machine-learning-and-more)
+  * [AWS Migration and Transfer Services](#aws-migration-and-transfer-services)
+  * [AWS Machine Learning Services](#aws-machine-learning-services)
+  * [End User Computing](#end-user-computing)
+  * [AWS IoT Core](#aws-iot-core)
+  * [AWS Device Farm](#aws-device-farm)
+  * [AWS Knowledge Center](#aws-knowledge-center)
+  * [Amazon Connect](#amazon-connect)
 
 ## Cloud Computing and AWS
 
@@ -1761,3 +1769,165 @@ Consolidated Billing is a **feature of AWS Organizations**, has the following be
   - **Price List Service API** (AKA the Query API) – query with JSON
   - **AWS Price List API** (AKA the Bulk API) – query with HTML
   - Alerts via Amazon SNS when prices change
+
+## Migration, Machine Learning and More
+
+### AWS Migration and Transfer Services
+
+<img src="https://i.imgur.com/q0tGNY3.png" alt="5"/>
+
+<img src="https://i.imgur.com/rzCkUwb.png" alt="5"/>
+
+<img src="https://i.imgur.com/IIpOceR.png" alt="5"/>
+
+<img src="https://i.imgur.com/s8kflUj.png" alt="5"/>
+
+- **AWS Snowball Family**
+  - **AWS Snowball and Snowmobile** are used for migrating large volumes of data to AWS
+  - **Snowball Edge Compute Optimized**
+    - Provides block and object storage and optional GPU
+    - Use for data collection, machine learning and processing, and storage in environments with intermittent connectivity (edge use cases)
+  - **Snowball Edge Storage Optimized**
+    - Provides block storage and Amazon S3-compatible object storage
+    - Use for local storage and large-scale data transfer
+  - **Snowcone**
+    - Small device used for edge computing, storage and data transfer
+    - Can transfer data offline or online with AWS DataSync agent
+
+- **AWS Snowball Family**
+  - Uses a secure storage device for physical transportation
+  - Snowball Client is software that is installed on a local computer and is used to identify, compress, encrypt, and transfer data
+  - Uses 256-bit encryption (managed with the AWS KMS) and tamper-resistant enclosures with TPM
+  - **Snowball** (80TB) (50TB ) “petabyte scale”
+  - **Snowball Edge** (100TB) “petabyte scale”
+  - **Snowmobile** - “exabyte scale” with up to 100PB per Snowmobile
+
+### AWS Machine Learning Services
+
+- **AWS Rekognition**
+  - Add image and video analysis to your applications
+  - Identify objects, people, text, scenes, and activities in images and videos
+  - Processes videos stored in an Amazon S3 bucket
+  - Publish completion status to Amazon SNS Topic
+
+<img src="https://i.imgur.com/ZhldNuh.png" alt="5"/>
+
+- AWS Rekognition in Event-Driven Architecture
+
+<img src="https://i.imgur.com/uxzj13C.png" alt="5"/>
+
+- **Amazon Transcribe**
+  - Add speech to text capabilities to applications
+  - Recorded speech can be converted to text before it can be used in applications
+  - Uses a deep learning process called automatic speech recognition (ASR) to convert speech to text quickly and accurately
+
+- **Amazon Translate**
+  - Neural machine translation service that delivers fast, high-quality, and affordable language translation
+  - Uses deep learning models to deliver more accurate and more natural sounding translation
+  - Localize content such as websites and applications for your diverse users
+
+- **Amazon Textract**
+  - Automatically extract printed text, handwriting, and data from any document
+  - Features:
+    - Optical character recognition (OCR)
+    - Identifies relationships, structure, and text
+    - Uses AI to extract text and structured data
+    - Recognizes handwriting as well as printed text
+    - Can text extract from documents such as PDFs, images, forms, and tables
+    - Understands context. For example know what data to extract from a receipt of invoice
+
+- **Amazon SageMaker**
+  - Helps data scientists and developers to prepare, build, train, and deploy high-quality machine learning (ML) models
+  - ML development activities including:
+    - Data preparation
+    - Feature engineering
+    - Statistical bias detection
+    - Auto-ML
+    - Training and tuning
+    - Hosting
+    - Monitoring
+    - Workflows
+
+- **Amazon Comprehend**
+  - Natural-language processing (NLP) service
+  - Uses machine learning to uncover information in unstructured data
+  - Can identify critical elements in data, including references to language, people, and places, and the text files can be categorized by relevant topics
+  - In real time, you can automatically and accurately detect customer sentiment in your content
+
+- **Amazon Lex**
+  - Conversational AI for Chatbots
+  - Build conversational interfaces into any application using voice and text
+  - Build bots to increase contact center productivity, automate simple tasks, and drive operational efficiencies across the enterprise
+
+- **Amazon Polly**
+  - Turns text into lifelike speech
+  - Create applications that talk, and build entirely new categories of speech-enabled products
+  - Text-to-Speech (TTS) service uses advanced deep learning technologies to synthesize natural sounding human speech
+
+- **Amazon Forecast**
+  - Time-series forecasting service
+  - Uses ML and built for business metrics analysis
+
+<img src="https://i.imgur.com/Pyk9qzZ.png" alt="5"/>
+
+- **Amazon DevOps Guru**
+  - Cloud operations service for improving **application operational performance and availability**
+  - Detect behaviors that deviate from normal operating patterns
+  - Benefits:
+    - Automatically detect operational issues
+    - Resolve issues with ML-powered insights
+    - Elastically scale operational analytics
+    - Uses ML to reduce alarm noise
+
+### End User Computing
+
+- Amazon Workspaces
+  - Managed Desktop-as-a-Service (DaaS) solution
+  - Provision either Windows or Linux desktops
+  - Simplifies delivery of desktops compared to traditional virtual desktop infrastructure (VDI) deployments
+
+<img src="https://i.imgur.com/SS4iEUQ.png" alt="5"/>
+
+- AWS AppStream 2.0
+
+<img src="https://i.imgur.com/PmrNxdB.png" alt="5"/>
+
+- AWS WorkLink
+
+<img src="https://i.imgur.com/JINEUaR.png" alt="5"/>
+
+- AWS WorkDocs
+
+<img src="https://i.imgur.com/gQiJfk1.png" alt="5"/>
+
+### AWS IoT Core
+
+- **The Internet of Things (IoT):**
+  - Describes the network of physical objects that are embedded with sensors or software
+  - Each IoT device can communicate and exchange data with other devices and systems
+  - Use cases include:
+    - Smart home automation
+    - Smart healthcare
+    - Manufacturing
+    - Agriculture
+
+- **AWS IoT Core**
+  - Lets you connect IoT devices to the AWS cloud without the need to provision or manage servers
+  - Can support billions of devices and trillions of messages
+
+<img src="https://i.imgur.com/T458OG6.png" alt="5"/>
+
+### AWS Device Farm
+
+AWS Device Farm is an application testing service used for web and mobile apps, what it does is it allows you to be able to test how your application looks across different types of browsers
+
+### AWS Knowledge Center
+
+The Knowledge Centre is a collection of information to help you and it's based on frequent questions that we get from their customers, and they've organized it into
+
+### Amazon Connect
+
+- Cloud Contact Center
+- Facilitates human agents in helping customers
+- Think human connection, not network connection!
+- Features include telephony automation, chatbots, task management, and analytics
